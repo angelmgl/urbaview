@@ -1,5 +1,6 @@
 <?php
 
+require('../config/config.php');
 session_start();
 
 if (isset($_POST['logout'])) {
@@ -10,7 +11,7 @@ if (isset($_POST['logout'])) {
     session_destroy();
 
     // Redirige al usuario a la página de inicio de sesión
-    header("Location: ../login.php");
+    header("Location: " . BASE_URL . "/login.php");
     exit;
 }
 

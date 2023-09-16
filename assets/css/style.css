@@ -1,0 +1,210 @@
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../../assets/fonts/Montserrat-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../../../assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: "MyriadPro";
+  src: url("../../../assets/fonts/MyriadPro-Bold.otf") format("opentype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Nexa";
+  src: url("../../../assets/fonts/NexaRegular.otf") format("opentype");
+  font-weight: 400;
+}
+
+body,
+input {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", Verdana, sans-serif;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: 95%;
+  max-width: 1140px;
+  margin: 0 auto;
+}
+
+.error {
+  color: red;
+}
+
+.semibold {
+  font-weight: 600;
+}
+
+.btn {
+  border: none;
+  border-radius: 25px;
+  outline: none;
+  padding: 12px 40px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 400;
+  transition: all 0.4s;
+}
+
+.btn-primary {
+  background: #785dfb;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #080b5f;
+}
+
+/* HEADER COMPONENT */
+
+#site-header {
+  padding: 20px 0;
+  background-color: #080b5f;
+}
+
+#site-header #site-logo {
+  display: block;
+  margin: 0 auto;
+}
+
+/* FOOTER COMPONENT */
+
+#site-footer {
+  padding: 60px 0;
+  background-color: #e2efff;
+  color: #080b5f;
+}
+
+#site-footer .footer-content {
+  display: flex;
+  margin-top: 12px;
+}
+
+#site-footer .copyright {
+  width: 80%;
+}
+
+#site-footer .copyright p {
+  max-width: 600px;
+  margin: 0;
+}
+
+#site-footer .copyright hr {
+  margin-top: 55px;
+  margin-bottom: 15px;
+  border: 4px solid #785dfb;
+  max-width: 150px;
+  margin-left: 0;
+}
+
+#site-footer .contact {
+  width: 20%;
+}
+
+#site-footer .contact p,
+#site-footer .contact h3 {
+  margin: 5px 0;
+}
+
+#site-footer .contact .email-p {
+  margin-top: 20px;
+}
+
+#site-footer .contact .icon-link {
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+#site-footer .contact .icon-link:hover {
+  color: #785dfb;
+}
+
+#site-footer .contact .icon-link.whatsapp-link svg {
+  font-size: 20px;
+}
+
+#site-footer .contact .icon-link svg {
+  margin-right: 7px;
+  color: #080b5f;
+}
+
+@media screen and (max-width: 768px) {
+  #site-footer .footer-content {
+    flex-direction: column-reverse;
+  }
+
+  #site-footer .contact,
+  #site-footer .copyright {
+    width: 100%;
+  }
+
+  #site-footer .copyright hr {
+    margin-top: 20px;
+  }
+}
+
+/* LOGIN PAGE */
+
+#login-page {
+  padding: 60px 0;
+  color: #080b5f;
+}
+
+#login-page .container {
+  min-height: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#login-page h1 {
+    font-size: 24px;
+    font-weight: 400;
+}
+
+#login-page .fields-container {
+    margin: 20px 0;
+    padding: 7px 0;
+    outline: 2px solid #785dfb;
+    border-radius: 30px;
+}
+
+#login-page .custom-input {
+    display: block;
+    width: 450px;
+    padding: 14px 30px;
+    outline: none;
+    border: none;
+    font-size: 18px;
+}
+
+#login-page .custom-input:last-of-type {
+    border-top: 2px solid #785dfb;
+}
+
+#login-page .btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 12px;
+}

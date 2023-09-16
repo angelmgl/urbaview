@@ -13,4 +13,6 @@ if ($mydb->connect_error) {
     die("Error en la conexión: " . $mydb->connect_error);
 }
 
+define('BASE_URL', 'http://localhost/urbaview');
+
 ?>
