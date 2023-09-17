@@ -42,9 +42,13 @@ a {
 }
 
 .container {
-  width: 95%;
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+}
+
+.container.px {
+  width: 95%;
 }
 
 .error {
@@ -179,6 +183,7 @@ a {
 #login-page h1 {
   font-size: 24px;
   font-weight: 400;
+  text-align: center;
 }
 
 #login-page .fields-container {
@@ -205,6 +210,12 @@ a {
   display: block;
   margin: 0 auto;
   margin-bottom: 12px;
+}
+
+@media screen and (max-width: 768px) {
+  #login-page .custom-input {
+    width: 100%;
+  }
 }
 
 /* PROFILE PAGE */
@@ -279,6 +290,21 @@ a {
 
 #profile-page #properties-listing {
   margin-bottom: 80px;
+}
+
+@media screen and (max-width: 768px) {
+  #profile-page .main-data {
+    flex-direction: column;
+  }
+
+  #profile-page #name,
+  #profile-page #company {
+    text-align: center;
+  }
+
+  #profile-page .contact span {
+    display: none;
+  }
 }
 
 /* PROPERTY CARD */
@@ -384,4 +410,52 @@ a {
   font-size: 20px;
   font-weight: 600;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 768px) {
+  .property-card .card-header {
+    flex-direction: column;
+  }
+
+  .property-card .card-header * {
+    width: 100%;
+  }
+
+  .property-card .property-title {
+    font-size: 30px;
+    margin: 10px 0;
+  }
+
+  .property-card .property-code {
+    margin: 0 0 15px;
+  }
+
+  .property-card .card-body {
+    flex-direction: column;
+  }
+
+  .property-card .property-thumbnail,
+  .property-card .property-details {
+    width: 100%;
+  }
+
+  .property-card .property-thumbnail {
+    height: 220px;
+  }
+
+  .property-card .property-details {
+    padding-top: 20px;
+  }
+
+  .property-card .details-container {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .property-card .price {
+    grid-column: span 2;
+  }
+
+  .property-card .see-more {
+    padding: 10px 0;
+  }
 }

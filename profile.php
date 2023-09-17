@@ -53,7 +53,7 @@ $title = $username;
                 </div>
             </div>
         </section>
-        <section id="properties-listing" class="container">
+        <section id="properties-listing" class="container px">
             <?php include './components/property_card.php' ?>
             <?php include './components/property_card.php' ?>
             <?php include './components/property_card.php' ?>

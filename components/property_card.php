@@ -1,7 +1,7 @@
 <article class="property-card">
     <div class="card-header">
         <h2 class="property-title">Casa a estrenar en la Zona del Barrio Villa Morra</h2>
-        <p><span class="semibold">ID:</span> BMG0001</p>
+        <p class="property-code"><span class="semibold">ID:</span> BMG0001</p>
     </div>
     <div class="card-body">
         <div class="property-thumbnail" style="background-image: url(<?php echo BASE_URL ?>/assets/img/property.jpg);">
@@ -13,15 +13,15 @@
         </div>
         <div class="property-details">
             <div class="details-container">
-                <div class="detail">
+                <div class="detail price">
                     <h3 class="detail-title">Precio</h3>
                     <p class="detail-content">U$D 178.000</p>
                 </div>
-                <div class="detail">
+                <div class="detail rooms">
                     <h3 class="detail-title">Habitaciones</h3>
                     <p class="detail-content">5</p>
                 </div>
-                <div class="detail">
+                <div class="detail bathrooms">
                     <h3 class="detail-title">Baños</h3>
                     <p class="detail-content">3</p>
                 </div>

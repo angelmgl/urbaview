@@ -1,5 +1,5 @@
 <footer id="site-footer">
-    <div class="container">
+    <div class="container px">
         <div>
             <img src="<?php echo BASE_URL ?>/assets/img/logo_blue.svg" alt="Logo Urbaview" width="220" />
         </div>

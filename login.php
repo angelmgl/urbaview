@@ -22,7 +22,7 @@ $title = "Iniciar sesión";
 <body>
     <?php include './components/header.php'; ?>
     <main id="login-page">
-        <div class="container">
+        <div class="container px">
             <img width="50" src="<?php echo BASE_URL ?>/assets/img/logo.svg" alt="Bienvenido a Urbaview" />
             <h1>Administra tu cuenta en <span class="semibold">urbaview</span></h1>
             <form id="login-form" action="./actions/auth_login.php" method="POST">
