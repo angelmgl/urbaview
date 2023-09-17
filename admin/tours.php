@@ -1,7 +1,7 @@
 <?php
 
 require '../config/config.php';
-$title = "Panel de administración";
+$title = "Tours";
 
 session_start();
 
@@ -23,7 +23,7 @@ if ($_SESSION['role'] !== 'admin') {
     <?php include './components/header.php'; ?>
 
     <main class="container px">
-        <h1>Dashboard</h1>
+        <h1>Administrar Tours</h1>
     </main>
 </body>
 
