@@ -53,8 +53,10 @@ $title = $username;
                 </div>
             </div>
         </section>
-        <section class="container">
-
+        <section id="properties-listing" class="container">
+            <?php include './components/property_card.php' ?>
+            <?php include './components/property_card.php' ?>
+            <?php include './components/property_card.php' ?>
         </section>
     </main>
 </body>

@@ -43,7 +43,7 @@ a {
 
 .container {
   width: 95%;
-  max-width: 1140px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -210,69 +210,178 @@ a {
 /* PROFILE PAGE */
 
 #profile-page #profile-banner {
-    background-color: #e2efff;
-    padding: 20px 30px;
+  background-color: #e2efff;
+  padding: 20px 30px;
 }
 
 #profile-page .main-data {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #profile-page .main-data #name {
-    font-size: 32px;
-    margin: 0 0 10px;
+  font-size: 32px;
+  margin: 0 0 10px;
 }
 
 #profile-page .main-data #company {
-    font-size: 18px;
-    font-weight: 400;
-    margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+  margin: 0;
 }
 
 #profile-page #profile-picture {
-    height: 150px;
-    width: 150px;
-    background-size: cover;
-    border-radius: 50%;
-    border: 1px solid #785dfb;
-    margin-right: 20px;
+  height: 150px;
+  width: 150px;
+  background-size: cover;
+  border-radius: 50%;
+  border: 1px solid #785dfb;
+  margin-right: 20px;
 }
 
 #profile-page .aditional-data {
-    margin-top: 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #profile-page .aditional-data .contact {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #profile-page .aditional-data .contact span {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 #profile-page .aditional-data .contact .social-link {
-    color: #785dfb;
-    font-size: 25px;
-    margin-right: 15px;
-    transition: all 0.4s;
+  color: #785dfb;
+  font-size: 25px;
+  margin-right: 15px;
+  transition: all 0.4s;
 }
 
 #profile-page .aditional-data .contact .social-link:hover {
-    color: #080b5f;
+  color: #080b5f;
 }
 
 #profile-page .aditional-data .details {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 #profile-page .aditional-data .details p {
-    margin-left: 15px;
-    margin-top: 0;
-    margin-bottom: 0;
+  margin-left: 15px;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+#profile-page #properties-listing {
+  margin-bottom: 80px;
+}
+
+/* PROPERTY CARD */
+
+.property-card {
+  margin-top: 60px;
+  border-bottom: 2px solid #785dfb;
+}
+
+.property-card .card-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.property-card .property-title {
+  font-size: 32px;
+  font-weight: 400;
+  max-width: 450px;
+}
+
+.property-card .card-body {
+  width: 100%;
+  display: flex;
+}
+
+.property-card .property-thumbnail {
+  width: 35%;
+  min-height: 100%;
+  margin-right: 20px;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.property-card .property-thumbnail .play {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.property-card .property-details {
+  width: 65%;
+}
+
+.property-card .photos-grid {
+  max-width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.property-card .photos-grid .property-photo {
+  max-width: 100%;
+}
+
+.property-card .photos-grid .photos-overflow {
+  width: 60%;
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e2efff;
+  cursor: pointer;
+}
+
+.property-card .photos-grid .overflow-quantity {
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.property-card .details-container {
+  display: grid;
+  grid-template-columns: 40% 30% 30%;
+}
+
+.property-card .detail-title {
+  text-transform: uppercase;
+  color: #785dfb;
+  margin: 0 0 5px;
+}
+
+.property-card .detail-content {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 20px;
+}
+
+.see-more {
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.see-more span {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
 }
