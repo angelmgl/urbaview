@@ -28,10 +28,10 @@ if ($user && password_verify($password, $user['password'])) {
     $updateStmt->close();
 
     // Redirigiremos al usuario donde corresponda
-    if ($user['role'] === 'user') {
+    if ($user['role'] === 'admin') {
         header("Location: " . BASE_URL . "/admin/dashboard.php");
         exit;
-    } else if ($user['role'] === 'admin') {
+    } else if ($user['role'] === 'user') {
         header("Location: " . BASE_URL . "/");
         exit;
     }

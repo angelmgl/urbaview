@@ -1,6 +1,6 @@
 <?php
 
-require('./config/config.php');
+require './config/config.php';
 session_start();
 
 // Si el usuario ya tiene una sesión iniciada, redirige al dashboard
@@ -23,7 +23,7 @@ $title = "Iniciar sesión";
     <?php include './components/header.php'; ?>
     <main id="login-page">
         <div class="container">
-            <img width="50" src="./assets/img/logo.svg" alt="Bienvenido a Urbaview" />
+            <img width="50" src="<?php echo BASE_URL ?>/assets/img/logo.svg" alt="Bienvenido a Urbaview" />
             <h1>Administra tu cuenta en <span class="semibold">urbaview</span></h1>
             <form id="login-form" action="./actions/auth_login.php" method="POST">
                 <div class="fields-container">

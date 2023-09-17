@@ -1,6 +1,6 @@
 <?php 
 
-require 'config.php';
+require './config.php';
 
 function create_table($mydb, $table_name, $sql_file) {
     // Escapar el nombre de la tabla para evitar inyecciones SQL

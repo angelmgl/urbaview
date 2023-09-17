@@ -1,0 +1,2 @@
+RewriteEngine On
+RewriteRule ^u/([^/]+)$ profile.php?username=$1 [L]

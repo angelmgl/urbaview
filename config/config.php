@@ -14,5 +14,6 @@ if ($mydb->connect_error) {
 }
 
 define('BASE_URL', 'http://localhost/urbaview');
+define('ROOT', __DIR__);
 
 ?>

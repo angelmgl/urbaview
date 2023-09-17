@@ -33,6 +33,7 @@ input {
   margin: 0;
   padding: 0;
   font-family: "Montserrat", Verdana, sans-serif;
+  color: #080b5f;
 }
 
 a {
@@ -91,7 +92,6 @@ a {
 #site-footer {
   padding: 60px 0;
   background-color: #e2efff;
-  color: #080b5f;
 }
 
 #site-footer .footer-content {
@@ -145,7 +145,6 @@ a {
 
 #site-footer .contact .icon-link svg {
   margin-right: 7px;
-  color: #080b5f;
 }
 
 @media screen and (max-width: 768px) {
@@ -167,7 +166,6 @@ a {
 
 #login-page {
   padding: 60px 0;
-  color: #080b5f;
 }
 
 #login-page .container {
@@ -179,32 +177,102 @@ a {
 }
 
 #login-page h1 {
-    font-size: 24px;
-    font-weight: 400;
+  font-size: 24px;
+  font-weight: 400;
 }
 
 #login-page .fields-container {
-    margin: 20px 0;
-    padding: 7px 0;
-    outline: 2px solid #785dfb;
-    border-radius: 30px;
+  margin: 20px 0;
+  padding: 7px 0;
+  outline: 2px solid #785dfb;
+  border-radius: 30px;
 }
 
 #login-page .custom-input {
-    display: block;
-    width: 450px;
-    padding: 14px 30px;
-    outline: none;
-    border: none;
-    font-size: 18px;
+  display: block;
+  width: 450px;
+  padding: 14px 30px;
+  outline: none;
+  border: none;
+  font-size: 18px;
 }
 
 #login-page .custom-input:last-of-type {
-    border-top: 2px solid #785dfb;
+  border-top: 2px solid #785dfb;
 }
 
 #login-page .btn {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 12px;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 12px;
+}
+
+/* PROFILE PAGE */
+
+#profile-page #profile-banner {
+    background-color: #e2efff;
+    padding: 20px 30px;
+}
+
+#profile-page .main-data {
+    display: flex;
+    align-items: center;
+}
+
+#profile-page .main-data #name {
+    font-size: 32px;
+    margin: 0 0 10px;
+}
+
+#profile-page .main-data #company {
+    font-size: 18px;
+    font-weight: 400;
+    margin: 0;
+}
+
+#profile-page #profile-picture {
+    height: 150px;
+    width: 150px;
+    background-size: cover;
+    border-radius: 50%;
+    border: 1px solid #785dfb;
+    margin-right: 20px;
+}
+
+#profile-page .aditional-data {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#profile-page .aditional-data .contact {
+    display: flex;
+    align-items: center;
+}
+
+#profile-page .aditional-data .contact span {
+    margin-right: 10px;
+}
+
+#profile-page .aditional-data .contact .social-link {
+    color: #785dfb;
+    font-size: 25px;
+    margin-right: 15px;
+    transition: all 0.4s;
+}
+
+#profile-page .aditional-data .contact .social-link:hover {
+    color: #080b5f;
+}
+
+#profile-page .aditional-data .details {
+    display: flex;
+    align-items: center;
+}
+
+#profile-page .aditional-data .details p {
+    margin-left: 15px;
+    margin-top: 0;
+    margin-bottom: 0;
 }

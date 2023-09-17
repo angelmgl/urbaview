@@ -1,7 +1,7 @@
 <footer id="site-footer">
     <div class="container">
         <div>
-            <img src="./assets/img/logo_blue.svg" alt="Logo Urbaview" width="220" />
+            <img src="<?php echo BASE_URL ?>/assets/img/logo_blue.svg" alt="Logo Urbaview" width="220" />
         </div>
         <div class="footer-content">
             <div class="copyright">

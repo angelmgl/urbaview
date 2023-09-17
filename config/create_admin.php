@@ -1,6 +1,6 @@
 <?php
 
-require 'config.php';
+require './config.php';
 
 // Función para verificar si hay usuarios en la tabla.
 function hasUsers($mydb) {
