@@ -1,2 +1,14 @@
 RewriteEngine On
+
+# Regla para el perfil de usuario
 RewriteRule ^u/([^/]+)$ profile.php?username=$1 [L]
+
+# Regla para el perfil de propiedad 
+RewriteRule ^tour/([^/]+)$ property.php?slug=$1 [L]
+
+# Para asegurar que el directorio no tenga la extensión
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Para redirigir a la versión sin extensión PHP
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^(.+)$ $1.php [L]
