@@ -3,6 +3,7 @@
 require '../config/config.php';
 $title = "Tours";
 
+// iniciar sesión y verificar autorización
 session_start();
 
 if ($_SESSION['role'] !== 'admin') {
@@ -22,7 +23,7 @@ if ($_SESSION['role'] !== 'admin') {
 <body>
     <?php include './components/header.php'; ?>
 
-    <main class="container px">
+    <main class="container px py">
         <h1>Administrar Tours</h1>
     </main>
 </body>
