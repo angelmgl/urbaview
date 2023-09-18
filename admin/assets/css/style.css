@@ -90,13 +90,14 @@ h1 {
   padding: 12px 40px;
   cursor: pointer;
   font-size: 18px;
-  font-weight: 400;
+  font-weight: 600;
   transition: all 0.4s;
 }
 
 .btn-primary {
   background: #785dfb;
   color: white;
+  border: 1px solid #785dfb;
 }
 
 .btn-primary:hover {
@@ -107,7 +108,6 @@ h1 {
   background: white;
   color: #080b5f;
   border: 1px solid #080b5f;
-  font-weight: 600;
 }
 
 .btn-secondary:hover {
@@ -315,4 +315,14 @@ h1 {
   font-size: 16px;
   border: 1px solid #c0c0c0;
   border-radius: 5px;
+}
+
+/* REMOVE USER */
+
+.remove-actions {
+  margin-top: 60px;
+}
+
+.remove-actions form {
+  display: inline;
 }
