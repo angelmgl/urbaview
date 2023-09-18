@@ -42,8 +42,17 @@ $mydb->close();
     <main class="container px py">
         <div class="top-bar">
             <h1>Administrar Usuarios</h1>
-            <a class="btn btn-primary" href="#">Añadir usuario</a>
+            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/add-user.php">Añadir usuario</a>
         </div>
+
+        <?php
+        if (isset($_SESSION['success'])) {
+            echo '<p class="success">';
+            echo $_SESSION['success'];
+            echo '</p>';
+            unset($_SESSION['success']);
+        }
+        ?>
 
         <section class="users-grid">
             <?php

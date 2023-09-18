@@ -22,6 +22,6 @@
     <div class="user-data">
         <h2 class="full-name"><?php echo $user["full_name"]; ?></h2>
         <h3 class="username">u/<?php echo $user["username"]; ?></h3>
-        <p class="last-login">Última vez el <?php echo formatDate($user["last_login"]); ?></p>
+        <p class="last-login"><?php echo get_last_login($user["last_login"]); ?></p>
     </div>
 </article>

@@ -1,8 +1,8 @@
 <?php 
 
-function formatDate($date) {
+function format_date($date) {
     $d = new DateTime($date);
-    
+
     $formatter = new IntlDateFormatter(
         'es_ES',
         IntlDateFormatter::LONG,
@@ -15,4 +15,10 @@ function formatDate($date) {
     return $formatter->format($d);
 }
 
-?>
+function get_last_login($date) {
+    if($date) {
+        return 'Última vez el ' . format_date($date);
+    } else {
+        return 'Aún no se ha conectado...';
+    }
+}
