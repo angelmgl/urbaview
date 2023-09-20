@@ -3,6 +3,7 @@
 require '../config/config.php';
 require './helpers/dates.php';
 require './helpers/forms.php';
+require './helpers/users.php';
 $title = "Editar usuario";
 
 // iniciar sesión y verificar autorización
@@ -20,7 +21,7 @@ $user = null;
 
 // preparar la consulta
 $stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username); 
+$stmt->bind_param("s", $username);
 
 // ejecutar la consulta
 $stmt->execute();
@@ -67,8 +68,8 @@ if ($user === null) {
             }
             ?>
             <form class="admin-form" action="./actions/update_user.php" method="POST" enctype="multipart/form-data">
-                <input type="hidden" name="user_id" value="<?php echo $user['id']; ?>">
-                <input type="hidden" name="old_photo" value="<?php echo $user['profile_picture']; ?>">
+                <input type="hidden" id="user_id" name="user_id" value="<?php echo $user['id']; ?>">
+                <input type="hidden" id="old_photo" name="old_photo" value="<?php echo $user['profile_picture']; ?>">
 
                 <div class="data-section">
                     <div class="input-wrapper text-input">
@@ -79,11 +80,6 @@ if ($user === null) {
                     <div class="input-wrapper text-input">
                         <label for="email">Email: <span class="required">*</span></label>
                         <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required>
-                    </div>
-
-                    <div class="input-wrapper text-input">
-                        <label for="password">Contraseña: <span class="required">*</span></label>
-                        <input type="password" id="password" name="password" disabled>
                     </div>
 
                     <div class="input-wrapper text-input">
@@ -133,10 +129,7 @@ if ($user === null) {
                         </select>
                     </div>
 
-                    <div class="input-wrapper text-input">
-                        <label for="profile_picture">Foto de perfil:</label>
-                        <input type="file" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png">
-                    </div>
+                    <?php include './components/profile_picture_field.php' ?>
 
                     <input class="btn btn-primary" type="submit" value="Actualizar">
                 </div>
@@ -144,6 +137,7 @@ if ($user === null) {
             <?php unset($_SESSION['form_data']); ?>
         </section>
     </main>
+    <script src="<?php echo BASE_URL ?>/admin/assets/js/users.js"></script>
 </body>
 
 </html>

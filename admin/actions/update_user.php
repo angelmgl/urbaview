@@ -14,7 +14,6 @@ if ($_SESSION['role'] !== 'admin') {
 // Recibe los datos del formulario.
 $user_id = $_POST['user_id']; // Asegúrate de enviar el ID del usuario desde el formulario.
 $email = $_POST['email'];
-$password = password_hash($_POST['password'], PASSWORD_DEFAULT);
 $full_name = $_POST['full_name'];
 $username = $_POST['username'];
 $company = $_POST['company'];
@@ -34,7 +33,13 @@ $profile_picture_path = $old_photo; // Inicializamos con la imagen anterior
 // Manejar la subida de la foto de perfil
 if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
     $tmp_name = $_FILES['profile_picture']['tmp_name'];
-    $name = basename($_FILES['profile_picture']['name']);
+    $original_name = basename($_FILES['profile_picture']['name']);
+    
+    // Obtener la extensión del archivo
+    $file_extension = pathinfo($original_name, PATHINFO_EXTENSION);
+    
+    // Crear un nuevo nombre para el archivo añadiendo una marca de tiempo
+    $name = pathinfo($original_name, PATHINFO_FILENAME) . "_" . time() . "." . $file_extension;
 
     $final_system_path = $upload_system_dir . $name; // Esta es la ruta que usamos para mover el archivo
     $final_url_path = $upload_url_dir . $name; // Esta es la ruta que guardamos en la BD
@@ -48,11 +53,11 @@ if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    UPDATE users SET email = ?, password = ?, full_name = ?, username = ?, company = ?, contact_email = ?, whatsapp = ?, instagram = ?, facebook = ?, profile_picture = ?, is_active = ?, role = ? 
+    UPDATE users SET email = ?, full_name = ?, username = ?, company = ?, contact_email = ?, whatsapp = ?, instagram = ?, facebook = ?, profile_picture = ?, is_active = ?, role = ? 
     WHERE id = ?
 ");
 
-$stmt->bind_param("ssssssssssisi", $email, $password, $full_name, $username, $company, $contact_email, $whatsapp, $instagram, $facebook, $profile_picture_path, $is_active, $role, $user_id);
+$stmt->bind_param("sssssssssisi", $email, $full_name, $username, $company, $contact_email, $whatsapp, $instagram, $facebook, $profile_picture_path, $is_active, $role, $user_id);
 
 try {
     if ($stmt->execute()) {

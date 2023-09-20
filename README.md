@@ -12,3 +12,4 @@
 - En el mismo archivo actualiza todas las constantes necesarias
 - Ingresa en la carpeta ``config`` desde la terminal y corre el comando ``php database_setup.php`` para crear la estructura de la base de datos
 - En esta misma carpeta corre el comando ``php create_admin.php`` y sigue los pasos para crear tu primer usuario administrador del sistema
+- En la raíz de tu proyecto crea una carpeta ``uploads`` para las subidas de archivos, y dentro, 2 carpetas: ``tour`` y ``users`` para cada recurso específicamente.
