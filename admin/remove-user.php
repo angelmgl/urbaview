@@ -18,7 +18,7 @@ $user = null;
 
 // preparar la consulta
 $stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username); // "s" indica que es una cadena (string)
+$stmt->bind_param("s", $username); 
 
 // ejecutar la consulta
 $stmt->execute();
