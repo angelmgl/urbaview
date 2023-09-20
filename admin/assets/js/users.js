@@ -4,7 +4,9 @@ const profilePictureInput = document.getElementById("profile_picture");
 const oldPhotoInput = document.getElementById("old_photo");
 
 deleteProfilePicture.addEventListener("click", e => {
-    oldPhotoInput.value = "";
+    if(oldPhotoInput) {
+        oldPhotoInput.value = "";
+    }
     profilePictureContainer.classList.remove("show");
     profilePictureInput.classList.add("show");
 

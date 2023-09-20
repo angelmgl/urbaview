@@ -104,10 +104,7 @@ if ($_SESSION['role'] !== 'admin') {
                         </select>
                     </div>
 
-                    <div class="input-wrapper text-input">
-                        <label for="profile_picture">Foto de perfil:</label>
-                        <input type="file" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png">
-                    </div>
+                    <?php include './components/profile_picture_field.php' ?>
 
                     <input class="btn btn-primary" type="submit" value="Crear Usuario">
                 </div>
@@ -115,6 +112,7 @@ if ($_SESSION['role'] !== 'admin') {
             <?php unset($_SESSION['form_data']); ?>
         </section>
     </main>
+    <script src="<?php echo BASE_URL ?>/admin/assets/js/users.js"></script>
 </body>
 
 </html>
