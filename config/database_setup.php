@@ -26,7 +26,7 @@ function create_table($mydb, $table_name, $sql_file) {
 }
 
 create_table($mydb, 'users', 'users.sql');
-create_table($mydb, 'properties', 'properties.sql');
+create_table($mydb, 'tours', 'tours.sql');
 
 // Cerrar la conexión
 $mydb->close();

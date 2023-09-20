@@ -1,5 +1,5 @@
 <article class="user-card">
-    <div class="profile-picture" style="background-image: url(<?php echo BASE_URL ?>/assets/img/profile.jpg)">
+    <div class="profile-picture" style="background-image: url(<?php echo get_profile_picture($user); ?>)">
         <span class="role <?php echo $user["role"]; ?>"><?php echo $user["role"]; ?></span>
         <div class="actions">
             <a href="#" class="action edit">
@@ -21,7 +21,7 @@
     </div>
     <div class="user-data">
         <h2 class="full-name"><?php echo $user["full_name"]; ?></h2>
-        <h3 class="username">u/<?php echo $user["username"]; ?></h3>
-        <p class="last-login"><?php echo get_last_login($user["last_login"]); ?></p>
+        <h3 class="username">@<?php echo $user["username"]; ?></h3>
+        <p class="last-login"><?php echo get_last_login($user); ?></p>
     </div>
 </article>

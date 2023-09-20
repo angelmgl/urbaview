@@ -2,6 +2,7 @@
 
 require '../config/config.php';
 require './helpers/dates.php';
+require './helpers/users.php';
 $title = "Usuarios";
 
 // iniciar sesión y verificar autorización

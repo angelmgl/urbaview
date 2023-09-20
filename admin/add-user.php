@@ -40,7 +40,7 @@ if ($_SESSION['role'] !== 'admin') {
                 unset($_SESSION['error']);
             }
             ?>
-            <form class="admin-form" action="./actions/create_user.php" method="POST">
+            <form class="admin-form" action="./actions/create_user.php" method="POST" enctype="multipart/form-data">
                 <div class="data-section">
                     <div class="input-wrapper text-input">
                         <label for="full_name">Nombre completo: <span class="required">*</span></label>
@@ -102,6 +102,11 @@ if ($_SESSION['role'] !== 'admin') {
                             <option value="user" selected>Usuario</option>
                             <option value="admin">Administrador</option>
                         </select>
+                    </div>
+
+                    <div class="input-wrapper text-input">
+                        <label for="profile_picture">Foto de perfil:</label>
+                        <input type="file" id="profile_picture" name="profile_picture" accept=".jpg, .jpeg, .png">
                     </div>
 
                     <input class="btn btn-primary" type="submit" value="Crear Usuario">

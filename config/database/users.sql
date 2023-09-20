@@ -11,6 +11,7 @@ CREATE TABLE users (
     facebook VARCHAR(255),
     is_active BOOLEAN DEFAULT TRUE,
     role ENUM('admin', 'user') DEFAULT 'user',
+    profile_picture VARCHAR(255) DEFAULT NULL,
     last_login DATETIME,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
