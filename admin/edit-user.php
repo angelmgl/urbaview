@@ -65,6 +65,11 @@ if ($user === null) {
                 echo $_SESSION['error'];
                 echo '</p>';
                 unset($_SESSION['error']);
+            } else if (isset($_SESSION['success'])) {
+                echo '<p class="success">';
+                echo $_SESSION['success'];
+                echo '</p>';
+                unset($_SESSION['success']);
             }
             ?>
             <form class="admin-form" action="./actions/update_user.php" method="POST" enctype="multipart/form-data">
@@ -131,7 +136,9 @@ if ($user === null) {
 
                     <?php include './components/profile_picture_field.php' ?>
 
-                    <input class="btn btn-primary" type="submit" value="Actualizar">
+                    <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar">
+
+                    <a class="change-password" href="<?php echo BASE_URL ?>/admin/change-password.php?username=<?php echo $user["username"]; ?>">Cambiar contraseña</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>

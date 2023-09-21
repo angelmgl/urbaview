@@ -57,6 +57,10 @@ if ($_SESSION['role'] !== 'admin') {
                         <input type="password" id="password" name="password" required>
                     </div>
 
+                    <p>
+                        No olvides que una contraseña segura tiene al menos 8 caracteres.
+                    </p>
+
                     <div class="input-wrapper text-input">
                         <label for="username">Nombre de usuario: <span class="required">*</span></label>
                         <input type="text" id="username" name="username" value="<?php echo get_form_data('username'); ?>" required>
@@ -106,13 +110,14 @@ if ($_SESSION['role'] !== 'admin') {
 
                     <?php include './components/profile_picture_field.php' ?>
 
-                    <input class="btn btn-primary" type="submit" value="Crear Usuario">
+                    <input id="submit-btn" class="btn btn-primary disabled" type="submit" value="Crear Usuario" disabled>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
         </section>
     </main>
     <script src="<?php echo BASE_URL ?>/admin/assets/js/users.js"></script>
+    <script src="<?php echo BASE_URL ?>/admin/assets/js/password.js"></script>
 </body>
 
 </html>

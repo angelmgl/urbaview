@@ -57,6 +57,11 @@ try {
     // Intenta ejecutar la consulta
     if ($stmt->execute()) {
         $_SESSION['success'] = "Usuario agregado exitosamente";
+
+        // Cerrar la sentencia y la conexión antes de redirigir
+        $stmt->close();
+        $mydb->close();
+
         header("Location: " . BASE_URL . "/admin/users.php");
         exit;
     } else {

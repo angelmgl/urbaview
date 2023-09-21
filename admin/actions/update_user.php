@@ -62,6 +62,11 @@ $stmt->bind_param("sssssssssisi", $email, $full_name, $username, $company, $cont
 try {
     if ($stmt->execute()) {
         $_SESSION['success'] = "Usuario actualizado exitosamente";
+
+        // Cerrar la sentencia y la conexión antes de redirigir
+        $stmt->close();
+        $mydb->close();
+
         header("Location: " . BASE_URL . "/admin/users.php");
         exit;
     } else {
@@ -74,7 +79,7 @@ try {
             'whatsapp' => $whatsapp,
             'instagram' => $instagram,
             'facebook' => $facebook,
-        ), "/admin/edit-user.php?id=" . $user_id);
+        ), "/admin/edit-user.php?username=" . $username);
     }
 } catch (Exception $e) {
     handleFormError("Error: " . $e->getMessage(), array(
@@ -86,7 +91,7 @@ try {
         'whatsapp' => $whatsapp,
         'instagram' => $instagram,
         'facebook' => $facebook,
-    ), "/admin/edit-user.php?id=" . $user_id);
+    ), "/admin/edit-user.php??username=" . $username);
 }
 
 $stmt->close();

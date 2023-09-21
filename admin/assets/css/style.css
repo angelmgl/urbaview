@@ -115,6 +115,12 @@ h1 {
   color: white;
 }
 
+.btn.disabled {
+  background: #a5a5a5 !important;
+  border-color: #7f7f7f;
+  cursor:not-allowed;
+}
+
 .top-bar {
   display: flex;
   justify-content: space-between;
@@ -344,6 +350,18 @@ h1 {
 .admin-form .file-input #profile-picture-container.show,
 .admin-form .file-input input.show {
   display: block;
+}
+
+.admin-form .change-password {
+  display: block;
+  text-decoration: underline;
+  margin-top: 20px;
+  font-weight: 600;
+  color: #785dfb;
+}
+
+.admin-form .change-password:hover {
+  color: #080b5f;
 }
 
 /* REMOVE USER */
