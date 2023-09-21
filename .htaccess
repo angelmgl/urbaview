@@ -12,3 +12,5 @@ RewriteCond %{REQUEST_FILENAME} !-d
 # Para redirigir a la versión sin extensión PHP
 RewriteCond %{REQUEST_FILENAME}\.php -f
 RewriteRule ^(.+)$ $1.php [L]
+
+ErrorDocument 404 /404.php
