@@ -18,7 +18,7 @@ $user = null;
 
 // preparar la consulta
 $stmt = $mydb->prepare("SELECT * FROM users WHERE username = ?");
-$stmt->bind_param("s", $username); 
+$stmt->bind_param("s", $username);
 
 // ejecutar la consulta
 $stmt->execute();
@@ -50,6 +50,15 @@ if ($user === null) {
     <?php include './components/header.php'; ?>
     <main class="container px py" id="remove-user">
         <h1>¿Estás seguro de que quieres eliminar a <?php echo $user["full_name"] ?>?</h1>
+
+        <p>
+            ¡Atención! Eliminar un usuario es una acción irreversible. Si no estás completamente
+            seguro, considera desactivarlo para que ya no sea público en lugar de eliminarlo
+            permanentemente. Puedes 
+            <a href="<?php echo BASE_URL ?>/admin/edit-user?username=<?php echo $user["username"]; ?>" class="semibold text-purple">
+                desactivarlo aquí.
+            </a>
+        </p>
 
         <div class="remove-actions">
             <form action="<?php echo BASE_URL ?>/admin/actions/delete_user.php" method="POST">

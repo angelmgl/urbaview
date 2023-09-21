@@ -1,4 +1,9 @@
-<article class="user-card">
+<?php 
+
+$active_class = $user["is_active"] == 1 ? "active" : "inactive";
+?>
+
+<article class="user-card <?php echo $active_class ?>">
     <div class="profile-picture" style="background-image: url(<?php echo get_profile_picture($user); ?>)">
         <span class="role <?php echo $user["role"]; ?>"><?php echo $user["role"]; ?></span>
         <div class="actions">

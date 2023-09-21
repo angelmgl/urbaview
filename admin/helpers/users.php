@@ -11,11 +11,14 @@ function get_profile_picture($user) {
 
 function get_last_login($user) {
     $date = $user["last_login"];
+    $is_active = $user["is_active"] == 1;
 
-    if($date) {
+    if($date && $is_active) {
         return 'Última vez el ' . format_date($date);
-    } else {
+    } else if($is_active) {
         return 'Aún no se ha conectado...';
+    } else {
+        return '🚫 Usuario inactivo.';
     }
 }
 

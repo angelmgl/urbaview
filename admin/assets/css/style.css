@@ -47,6 +47,10 @@ a {
   color: inherit;
 }
 
+p {
+  line-height: 1.5em;
+}
+
 h1 {
   font-size: 40px;
 }
@@ -81,6 +85,10 @@ h1 {
 
 .semibold {
   font-weight: 600;
+}
+
+.text-purple {
+  color: #785dfb;
 }
 
 .btn {
@@ -185,6 +193,11 @@ h1 {
   overflow: hidden;
 }
 
+.user-card.inactive {
+  border: 4px solid #a5a5a5;
+  filter: grayscale(100%) opacity(70%);
+}
+
 .user-card .profile-picture {
   width: 100%;
   aspect-ratio: 1;
@@ -245,6 +258,10 @@ h1 {
   background: teal;
 }
 
+.user-card.inactive .action.view {
+  display: none;
+}
+
 .user-card .role.admin {
   background-color: yellow;
   color: #080b5f;
@@ -252,6 +269,11 @@ h1 {
 
 .user-card .role.user {
   background-color: #080b5f;
+  color: white;
+}
+
+.user-card.inactive .role {
+  background-color: #a5a5a5;
   color: white;
 }
 
