@@ -1,6 +1,7 @@
 <?php
 
 require '../config/config.php';
+require './helpers/properties.php';
 $title = "Tours";
 
 // iniciar sesión y verificar autorización
@@ -12,7 +13,7 @@ if ($_SESSION['role'] !== 'admin') {
 }
 
 // recuperar registros de propiedades
-$query = "SELECT * FROM properties";
+$query = "SELECT properties.*, users.full_name FROM properties INNER JOIN users ON properties.user_id = users.id";
 $result = $mydb->query($query);
 
 $properties = [];
@@ -22,9 +23,6 @@ if ($result->num_rows > 0) {
         $properties[] = $row;
     }
 }
-
-// Cierra la conexión a la base de datos.
-$mydb->close();
 
 ?>
 
@@ -54,10 +52,10 @@ $mydb->close();
         ?>
 
         <?php if(count($properties) > 0) { ?>
-        <section class="grid">
+        <section class="users-grid">
             <?php
             foreach ($properties as $property) {
-                echo "<p>{$property['title']}</p>";
+                include "./components/property_card.php";
             }
             ?>
         </section>

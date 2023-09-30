@@ -8,7 +8,6 @@ function get_profile_picture($user) {
     }
 }
 
-
 function get_last_login($user) {
     $date = $user["last_login"];
     $is_active = $user["is_active"] == 1;
@@ -21,5 +20,3 @@ function get_last_login($user) {
         return '🚫 Usuario inactivo.';
     }
 }
-
-?>

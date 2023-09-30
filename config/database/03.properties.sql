@@ -7,6 +7,7 @@ CREATE TABLE properties (
     user_id INT(11) UNSIGNED NOT NULL,
     property_type_id INT(11) UNSIGNED NOT NULL,
     rooms INT UNSIGNED,
+    thumbnail VARCHAR(255),
     location VARCHAR(255),
     department VARCHAR(255),
     city VARCHAR(255),
