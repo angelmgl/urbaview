@@ -1,0 +1,4 @@
+CREATE TABLE property_types (
+    id INT(11) UNSIGNED PRIMARY KEY AUTO_INCREMENT,
+    type_name VARCHAR(255) NOT NULL UNIQUE
+);

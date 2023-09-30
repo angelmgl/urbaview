@@ -25,8 +25,11 @@ function create_table($mydb, $table_name, $sql_file) {
     }
 }
 
-create_table($mydb, 'users', 'users.sql');
-create_table($mydb, 'tours', 'tours.sql');
+create_table($mydb, 'users', '01.users.sql');
+create_table($mydb, 'property_types', '02.property_types.sql');
+create_table($mydb, 'properties', '03.properties.sql');
+create_table($mydb, 'commodities', '04.commodities.sql');
+create_table($mydb, 'property_commodities', '05.property_commodities.sql');
 
 // Cerrar la conexión
 $mydb->close();

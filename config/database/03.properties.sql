@@ -1,0 +1,30 @@
+CREATE TABLE properties (
+    id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    price DECIMAL(15,2) NOT NULL,
+    tour_url TEXT NOT NULL,
+    user_id INT(11) UNSIGNED NOT NULL,
+    property_type_id INT(11) UNSIGNED NOT NULL,
+    rooms INT UNSIGNED,
+    location VARCHAR(255),
+    department VARCHAR(255),
+    city VARCHAR(255),
+    neighborhood VARCHAR(255),
+    bathroom INT UNSIGNED,
+    code_ref VARCHAR(100),
+    land_m2 INT(11) UNSIGNED,
+    land_width INT(11) UNSIGNED,
+    land_length INT(11) UNSIGNED,
+    build_m2 INT UNSIGNED,
+    year INT,
+    parking_capacity INT UNSIGNED,
+    building_floors INT UNSIGNED,
+    status ENUM('publicado', 'borrador') NOT NULL DEFAULT 'borrador',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    
+    -- Foreign Key
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
+    FOREIGN KEY (property_type_id) REFERENCES property_types(id)
+);
