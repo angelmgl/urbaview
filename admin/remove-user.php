@@ -1,8 +1,7 @@
 <?php
 
 require '../config/config.php';
-require './helpers/dates.php';
-$title = "Usuarios";
+$title = "Eliminar usuario";
 
 // iniciar sesión y verificar autorización
 session_start();

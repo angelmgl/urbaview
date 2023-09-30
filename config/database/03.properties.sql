@@ -2,7 +2,7 @@ CREATE TABLE properties (
     id INT(11) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     title VARCHAR(255) NOT NULL,
     slug VARCHAR(255) NOT NULL UNIQUE,
-    price DECIMAL(15,2) NOT NULL,
+    price INT(11) NOT NULL,
     tour_url TEXT NOT NULL,
     user_id INT(11) UNSIGNED NOT NULL,
     property_type_id INT(11) UNSIGNED NOT NULL,

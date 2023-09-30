@@ -11,6 +11,21 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
+// recuperar registros de propiedades
+$query = "SELECT * FROM properties";
+$result = $mydb->query($query);
+
+$properties = [];
+if ($result->num_rows > 0) {
+    // Si hay resultados, recórrelos y añádelos al array $properties.
+    while ($row = $result->fetch_assoc()) {
+        $properties[] = $row;
+    }
+}
+
+// Cierra la conexión a la base de datos.
+$mydb->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -24,7 +39,33 @@ if ($_SESSION['role'] !== 'admin') {
     <?php include './components/header.php'; ?>
 
     <main class="container px py">
-        <h1>Administrar Tours</h1>
+    <div class="top-bar">
+            <h1>Administrar Tours</h1>
+            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/add-tour.php">Añadir tour</a>
+        </div>
+
+        <?php
+        if (isset($_SESSION['success'])) {
+            echo '<p class="success">';
+            echo $_SESSION['success'];
+            echo '</p>';
+            unset($_SESSION['success']);
+        }
+        ?>
+
+        <?php if(count($properties) > 0) { ?>
+        <section class="grid">
+            <?php
+            foreach ($properties as $property) {
+                echo "<p>{$property['title']}</p>";
+            }
+            ?>
+        </section>
+        <?php } else { ?>
+        <div>
+            No hay propiedades ahora mismo
+        </div>
+        <?php } ?>
     </main>
 </body>
 
