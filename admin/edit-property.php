@@ -127,11 +127,6 @@ $mydb->close();
 
                     <h2>Detalles de ubicación</h2>
 
-                    <div class="input-wrapper text-input">
-                        <label for="location">URL ubicación de Google Maps:</label>
-                        <input type="text" id="location" name="location" value="<?php echo $property['location']; ?>">
-                    </div>
-
                     <div class="grid cols-3">
                         <div class="input-wrapper text-input">
                             <label for="department">Departamento:</label>
@@ -147,6 +142,14 @@ $mydb->close();
                             <label for="neighborhood">Barrio:</label>
                             <input type="text" id="neighborhood" name="neighborhood" value="<?php echo $property['neighborhood']; ?>">
                         </div>
+                    </div>
+
+                    <div class="input-wrapper">
+                    <label>Selecciona la ubicación en el mapa:</label>
+                        <div id="map"></div>
+
+                        <input type="hidden" name="lat" id="lat" value="<?php echo $property['lat']; ?>">
+                        <input type="hidden" name="lng" id="lng" value="<?php echo $property['lng']; ?>">
                     </div>
 
                     <h2>Detalles de la propiedad</h2>
@@ -244,6 +247,9 @@ $mydb->close();
         </section>
     </main>
     <script src="<?php echo BASE_URL ?>/admin/assets/js/properties.js"></script>
+    <script src="<?php echo BASE_URL ?>/admin/assets/js/location_picker.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0&callback=initMap&v=weekly" async></script>
 </body>
 
 </html>

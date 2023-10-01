@@ -148,12 +148,17 @@ print_r($property);
                     <h3 class="detail-title">Ubicación</h3>
                     <p class="code"><span class="semibold">ID:</span> <?php echo $property["code_ref"] ?></p>
                 </div>
-                <iframe src="<?php echo $property["location"] ?>" style="width: 100%; border: 0;" height="280" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                <input type="hidden" name="lat" id="lat" value="<?php echo $property['lat']; ?>">
+                <input type="hidden" name="lng" id="lng" value="<?php echo $property['lng']; ?>">
+                <div id="map"></div>
             </div>
         </section>
         <!-- TERMINA SECCIÓN DE MULTIMEDIA -->
     </main>
     <script src="<?php echo BASE_URL ?>/assets/js/accordeon.js"></script>
+    <script src="<?php echo BASE_URL ?>/assets/js/map.js"></script>
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0&callback=initMap&v=weekly" async></script>
 </body>
 
 </html>

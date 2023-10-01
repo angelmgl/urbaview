@@ -459,3 +459,7 @@ h1 {
 .grid.cols-3 {
     grid-template-columns: repeat(3, 1fr);
 }
+
+#map {
+    height: 350px;
+}

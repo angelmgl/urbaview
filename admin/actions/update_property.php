@@ -21,7 +21,8 @@ $user_id = $_POST['user_id'];
 $property_type_id = $_POST['property_type_id'];
 $rooms = $_POST['rooms'];
 $bathrooms = $_POST['bathrooms'];
-$location = $_POST['location'];
+$lat = $_POST['lat'];
+$lng = $_POST['lng'];
 $department = $_POST['department'];
 $city = $_POST['city'];
 $neighborhood = $_POST['neighborhood'];
@@ -59,11 +60,11 @@ if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] == UPLOAD_ERR_O
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    UPDATE properties SET title = ?, price = ?, tour_url = ?, user_id = ?, property_type_id = ?, thumbnail = ?, rooms = ?, bathrooms = ?, location = ?, department = ?, city = ?, neighborhood = ?, code_ref = ?, land_m2 = ?, land_width = ?, land_length = ?, build_m2 = ?, year = ?, parking_capacity = ?, building_floors = ?, status = ? 
+    UPDATE properties SET title = ?, price = ?, tour_url = ?, user_id = ?, property_type_id = ?, thumbnail = ?, rooms = ?, bathrooms = ?, lat = ?, lng = ?, department = ?, city = ?, neighborhood = ?, code_ref = ?, land_m2 = ?, land_width = ?, land_length = ?, build_m2 = ?, year = ?, parking_capacity = ?, building_floors = ?, status = ? 
     WHERE id = ?
 ");
 
-$stmt->bind_param("sisiisiisssssiiiiiiisi", $title, $price, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $location, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status, $property_id);
+$stmt->bind_param("sisiisiiddssssiiiiiiisi", $title, $price, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status, $property_id);
 
 try {
     if ($stmt->execute()) {
