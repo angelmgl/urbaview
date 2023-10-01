@@ -536,7 +536,7 @@ p {
 }
 
 #property-page #details-grid.open {
-  height: 385px;
+  height: 415px;
 }
 
 #property-page .detail-title {
@@ -609,24 +609,24 @@ p {
   margin-right: 20px;
 }
 
-#property-page .user-card .user-contact {
+#property-page .user-card .contact {
   margin-top: 10px;
   display: flex;
   align-items: center;
 }
 
-#property-page .user-card .user-contact span {
+#property-page .user-card .contact span {
   margin-right: 10px;
 }
 
-#property-page .user-card .user-contact .social-link {
+#property-page .user-card .contact .social-link {
   color: #785dfb;
   font-size: 25px;
   margin-right: 15px;
   transition: all 0.4s;
 }
 
-#property-page .user-card .user-contact .social-link:hover {
+#property-page .user-card .contact .social-link:hover {
   color: #080b5f;
 }
 
