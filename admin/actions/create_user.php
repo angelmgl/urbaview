@@ -33,10 +33,14 @@ $upload_url_dir = "/uploads/users/";
 // Manejar la subida de la foto de perfil
 if ($_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
     $tmp_name = $_FILES['profile_picture']['tmp_name'];
-    $name = basename($_FILES['profile_picture']['name']);
-
-    $final_system_path = $upload_system_dir . $name; // Esta es la ruta que usamos para mover el archivo
-    $final_url_path = $upload_url_dir . $name; // Esta es la ruta que guardamos en la BD
+    
+    $file_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
+    $filename_without_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_FILENAME);
+    
+    $new_name = $filename_without_extension . "_" . time() . "." . $file_extension;
+    
+    $final_system_path = $upload_system_dir . $new_name; 
+    $final_url_path = $upload_url_dir . $new_name; 
 
     if (move_uploaded_file($tmp_name, $final_system_path)) {
         $profile_picture_path = $final_url_path;

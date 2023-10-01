@@ -91,23 +91,23 @@ if ($types_result->num_rows > 0) {
 
                     <div class="input-wrapper text-input">
                         <label for="location">URL ubicación de Google Maps:</label>
-                        <input type="number" id="location" name="location" value="<?php echo get_form_data('location'); ?>" required>
+                        <input type="text" id="location" name="location" value="<?php echo get_form_data('location'); ?>">
                     </div>
 
                     <div class="grid cols-3">
                         <div class="input-wrapper text-input">
                             <label for="department">Departamento:</label>
-                            <input type="text" id="department" name="department" value="<?php echo get_form_data('department'); ?>" required>
+                            <input type="text" id="department" name="department" value="<?php echo get_form_data('department'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="city">Ciudad:</label>
-                            <input type="text" id="city" name="city" value="<?php echo get_form_data('city'); ?>" required>
+                            <input type="text" id="city" name="city" value="<?php echo get_form_data('city'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="neighborhood">Barrio:</label>
-                            <input type="text" id="neighborhood" name="neighborhood" value="<?php echo get_form_data('neighborhood'); ?>" required>
+                            <input type="text" id="neighborhood" name="neighborhood" value="<?php echo get_form_data('neighborhood'); ?>">
                         </div>
                     </div>
 
@@ -116,51 +116,51 @@ if ($types_result->num_rows > 0) {
                     <div class="grid cols-3">
                         <div class="input-wrapper text-input">
                             <label for="rooms">Habitaciones:</label>
-                            <input type="number" id="rooms" name="rooms" value="<?php echo get_form_data('rooms'); ?>" required>
+                            <input type="number" id="rooms" name="rooms" value="<?php echo get_form_data('rooms'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="bathrooms">Baños:</label>
-                            <input type="number" id="bathrooms" name="bathrooms" value="<?php echo get_form_data('bathrooms'); ?>" required>
+                            <input type="number" id="bathrooms" name="bathrooms" value="<?php echo get_form_data('bathrooms'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="building_floors">Pisos:</label>
-                            <input type="number" id="building_floors" name="building_floors" value="<?php echo get_form_data('building_floors'); ?>" required>
+                            <input type="number" id="building_floors" name="building_floors" value="<?php echo get_form_data('building_floors'); ?>">
                         </div>
                     </div>
 
                     <div class="grid cols-3">
                         <div class="input-wrapper text-input">
                             <label for="land_m2">Terreno (m2):</label>
-                            <input type="number" id="land_m2" name="land_m2" value="<?php echo get_form_data('land_m2'); ?>" required>
+                            <input type="number" id="land_m2" name="land_m2" value="<?php echo get_form_data('land_m2'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="land_width">Ancho del terreno (m):</label>
-                            <input type="number" id="land_width" name="land_width" value="<?php echo get_form_data('land_width'); ?>" required>
+                            <input type="number" id="land_width" name="land_width" value="<?php echo get_form_data('land_width'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="land_length">Largo del terreno (m):</label>
-                            <input type="number" id="land_length" name="land_length" value="<?php echo get_form_data('land_length'); ?>" required>
+                            <input type="number" id="land_length" name="land_length" value="<?php echo get_form_data('land_length'); ?>">
                         </div>
                     </div>
 
                     <div class="grid cols-3">
                         <div class="input-wrapper text-input">
                             <label for="build_m2">Metros construidos (m2):</label>
-                            <input type="number" id="build_m2" name="build_m2" value="<?php echo get_form_data('build_m2'); ?>" required>
+                            <input type="number" id="build_m2" name="build_m2" value="<?php echo get_form_data('build_m2'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="year">Año de la propiedad:</label>
-                            <input type="number" id="year" name="year" value="<?php echo get_form_data('year'); ?>" required>
+                            <input type="number" id="year" name="year" value="<?php echo get_form_data('year'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">
                             <label for="parking_capacity">Estacionamiento:</label>
-                            <input type="number" id="parking_capacity" name="parking_capacity" value="<?php echo get_form_data('parking_capacity'); ?>" required>
+                            <input type="number" id="parking_capacity" name="parking_capacity" value="<?php echo get_form_data('parking_capacity'); ?>">
                         </div>
                     </div>
                 </div>
