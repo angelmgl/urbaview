@@ -83,7 +83,7 @@ if ($types_result->num_rows > 0) {
 
                         <div class="input-wrapper text-input">
                             <label for="code_ref">Código de referencia:</label>
-                            <input type="text" id="code_ref" name="code_ref" value="<?php echo get_form_data('code_ref'); ?>" required>
+                            <input type="text" id="code_ref" name="code_ref" value="<?php echo get_form_data('code_ref'); ?>">
                         </div>
                     </div>
 
