@@ -4,7 +4,7 @@
         <div id="nav-links">
             <a class="nav-link" href="<?php echo BASE_URL ?>/admin/dashboard.php">Dashboard</a>
             <a class="nav-link" href="<?php echo BASE_URL ?>/admin/users.php">Usuarios</a>
-            <a class="nav-link" href="<?php echo BASE_URL ?>/admin/tours.php">Tours</a>
+            <a class="nav-link" href="<?php echo BASE_URL ?>/admin/properties.php">Tours</a>
             <a class="nav-link" href="<?php echo BASE_URL ?>/admin/options.php">Opciones</a>
             <form action="../actions/auth_logout.php" method="post">
                 <button class="logout-btn" type="submit" name="logout">

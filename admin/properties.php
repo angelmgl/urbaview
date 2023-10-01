@@ -39,7 +39,7 @@ if ($result->num_rows > 0) {
     <main class="container px py">
     <div class="top-bar">
             <h1>Administrar Tours</h1>
-            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/add-tour.php">Añadir tour</a>
+            <a class="btn btn-primary" href="<?php echo BASE_URL ?>/admin/add-property.php">Añadir tour</a>
         </div>
 
         <?php
