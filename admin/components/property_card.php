@@ -22,5 +22,6 @@
     <div class="user-data">
         <h2 class="full-name"><?php echo $property["title"]; ?></h2>
         <h3 class="username">De: <?php echo $property["full_name"]; ?></h3>
+        <p class="last-login">Última modificación el <?php echo format_date($property["updated_at"]); ?></p>
     </div>
 </article>

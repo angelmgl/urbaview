@@ -47,7 +47,7 @@ if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == 
     if (move_uploaded_file($tmp_name, $final_system_path)) {
         $profile_picture_path = $final_url_path;
     } else {
-        handleFormError("No se pudo subir la imagen de perfil.", $_POST, "/admin/edit-user.php");
+        handleFormError("No se pudo subir la imagen de perfil.", $_POST, "/admin/edit-user.php?username=" . $username);
     }
 }
 

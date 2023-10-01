@@ -188,8 +188,8 @@ if ($types_result->num_rows > 0) {
                         <label for="property_type_id">Seleccionar tipo de propiedad:</label>
                         <select id="property_type_id" name="property_type_id">
                             <?php
-                            foreach ($types as $types) {
-                                echo "<option value=\"{$types['id']}\">{$types['type_name']}</option>";
+                            foreach ($types as $type) {
+                                echo "<option value=\"{$type['id']}\">{$type['type_name']}</option>";
                             }
                             ?>
                         </select>

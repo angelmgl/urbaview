@@ -2,6 +2,7 @@
 
 require '../config/config.php';
 require './helpers/properties.php';
+require './helpers/dates.php';
 $title = "Tours";
 
 // iniciar sesión y verificar autorización
