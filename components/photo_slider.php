@@ -1,27 +1,20 @@
-<div class="swiper photo-slider">
-    <div class="swiper-wrapper">
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
+<?php if (isset($property['images']) && !empty($property['images'])): ?>
+    <div class="swiper photo-slider">
+        <div class="swiper-wrapper">
+            <?php foreach ($property['images'] as $image): ?>
+                <div class="swiper-slide">
+                    <a href="<?php echo BASE_URL . $image['image_path']; ?>" data-lightbox="gallery">
+                        <img class="property-photo" src="<?php echo BASE_URL . $image['image_path']; ?>" alt="Imagen de la propiedad <?php echo $image['image_id']; ?>">
+                    </a>
+                </div>
+            <?php endforeach; ?>
         </div>
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
-        </div>
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
-        </div>
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
-        </div>
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
-        </div>
-        <div class="swiper-slide">
-            <img class="property-photo" src="<?php echo BASE_URL ?>/assets/img/property.jpg" alt="Casa a estrenar" />
-        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
     </div>
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-</div>
+<?php else: ?>
+    <p>Esta propiedad no tiene fotos...</p>
+<?php endif; ?>
 
 <!-- Swiper JS -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>

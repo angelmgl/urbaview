@@ -23,5 +23,5 @@ if(isset($user)) {
             </svg>
         </button>
     </div>
-    <input type="file" id="profile_picture" name="profile_picture" class="<?php echo $show_input; ?>" accept=".jpg, .jpeg, .png">
+    <input type="file" id="profile_picture" name="profile_picture" class="<?php echo $show_input; ?>" accept=".jpg, .jpeg, .png, .webp">
 </div>

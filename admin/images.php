@@ -79,7 +79,7 @@ $mydb->close();
             <input type="hidden" name="property_id" value="<?php echo $property_id ?>">
             <div class="images-input">
                 <label>Selecciona las imágenes...</label>
-                <input type="file" id="images" class="show" name="images[]" accept=".jpg, .jpeg, .png" multiple>
+                <input type="file" id="images" class="show" name="images[]" accept=".jpg, .jpeg, .png, .webp" multiple>
                 <input id="submit-btn" class="btn btn-primary" type="submit" value="Subir imágenes">
             </div>
         </form>

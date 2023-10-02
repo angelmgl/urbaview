@@ -23,5 +23,5 @@ if(isset($property)) {
             </svg>
         </button>
     </div>
-    <input type="file" id="thumbnail" name="thumbnail" class="<?php echo $show_input; ?>" accept=".jpg, .jpeg, .png">
+    <input type="file" id="thumbnail" name="thumbnail" class="<?php echo $show_input; ?>" accept=".jpg, .jpeg, .png, .webp">
 </div>
