@@ -463,3 +463,60 @@ h1 {
 #map {
     height: 350px;
 }
+
+.images-input {
+    width: 100%;
+    padding: 6px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+.images-input label {
+    min-width: max-content;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-right: 20px;
+}
+
+.images-input input {
+    display: block;
+    width: 100%;
+    padding: 7px 20px;
+    font-size: 16px;
+}
+
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.images-grid .image-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #e2efff;
+    position: relative;
+}
+
+.images-grid .image-container img {
+    max-width: 100%;
+}
+
+.images-grid .image-container .delete {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.image-to-remove {
+    display: block;
+    max-width: 500px;
+}

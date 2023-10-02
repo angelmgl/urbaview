@@ -30,6 +30,7 @@ create_table($mydb, 'property_types', '02.property_types.sql');
 create_table($mydb, 'properties', '03.properties.sql');
 create_table($mydb, 'commodities', '04.commodities.sql');
 create_table($mydb, 'property_commodities', '05.property_commodities.sql');
+create_table($mydb, 'images', '06.images.sql');
 
 // Cerrar la conexión
 $mydb->close();

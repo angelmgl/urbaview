@@ -145,7 +145,7 @@ $mydb->close();
                     </div>
 
                     <div class="input-wrapper">
-                    <label>Selecciona la ubicación en el mapa:</label>
+                        <label>Selecciona la ubicación en el mapa:</label>
                         <div id="map"></div>
 
                         <input type="hidden" name="lat" id="lat" value="<?php echo $property['lat']; ?>">
@@ -241,6 +241,8 @@ $mydb->close();
                     <?php include './components/thumbnail_field.php' ?>
 
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Tour">
+
+                    <a class="change-password" href="<?php echo BASE_URL ?>/admin/images.php?property_id=<?php echo $property["id"]; ?>">Administrar imágenes</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>
