@@ -13,42 +13,36 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
-
 $slug = $_GET["slug"];
-
 $property = null;
 
-// preparar la consulta
-$stmt = $mydb->prepare("SELECT * FROM properties WHERE slug = ?");
-$stmt->bind_param("s", $slug);
+// preparar la consulta para propiedad
+$property_stmt = $mydb->prepare("SELECT * FROM properties WHERE slug = ?");
+$property_stmt->bind_param("s", $slug);
+$property_stmt->execute();
 
-// ejecutar la consulta
-$stmt->execute();
-
-$result = $stmt->get_result();
+$result = $property_stmt->get_result();
 if ($result->num_rows > 0) {
     $property = $result->fetch_assoc();
 }
 
-// Si no se encontró al usuario, redirige a la página de lista de usuarios.
+// Si no se encontró la propiedad
 if ($property === null) {
-    header("Location: " . BASE_URL . "/admin/properties.php");
-
-    $stmt->close();
+    $property_stmt->close();
     $mydb->close();
+    header("Location: " . BASE_URL . "/admin/properties.php");
     exit;
 }
+
+$property_stmt->close();
 
 // recuperar registros de usuarios
 $users_query = "SELECT * FROM  users WHERE is_active = true";
 $users_result = $mydb->query($users_query);
 
 $users = [];
-if ($users_result->num_rows > 0) {
-    // Si hay resultados, recórrelos y añádelos al array $users.
-    while ($row = $users_result->fetch_assoc()) {
-        $users[] = $row;
-    }
+while ($row = $users_result->fetch_assoc()) {
+    $users[] = $row;
 }
 
 // recuperar registros de tipos de propiedades
@@ -56,14 +50,32 @@ $types_query = "SELECT * FROM  property_types";
 $types_result = $mydb->query($types_query);
 
 $types = [];
-if ($types_result->num_rows > 0) {
-    // Si hay resultados, recórrelos y añádelos al array $types.
-    while ($row = $types_result->fetch_assoc()) {
-        $types[] = $row;
-    }
+while ($row = $types_result->fetch_assoc()) {
+    $types[] = $row;
 }
 
-$stmt->close();
+// recuperar registros de commodities
+$commodities_query = "SELECT * FROM commodities";
+$commodities_result = $mydb->query($commodities_query);
+
+$commodities = [];
+while ($row = $commodities_result->fetch_assoc()) {
+    $commodities[] = $row;
+}
+
+// recuperar las commodities de esta propiedad
+$property_commodities_query = "SELECT commodity_id FROM property_commodities WHERE property_id = ?";
+$pc_stmt = $mydb->prepare($property_commodities_query);
+$pc_stmt->bind_param("i", $property['id']);
+
+$pc_stmt->execute();
+$property_commodities_result = $pc_stmt->get_result();
+$current_property_commodities = [];
+while ($row = $property_commodities_result->fetch_assoc()) {
+    $current_property_commodities[] = $row['commodity_id'];
+}
+
+$pc_stmt->close();
 $mydb->close();
 
 ?>
@@ -204,6 +216,21 @@ $mydb->close();
                             <input type="number" id="parking_capacity" name="parking_capacity" value="<?php echo $property['parking_capacity']; ?>">
                         </div>
                     </div>
+
+                    <h2>Commodities</h2>
+
+                    <div class="grid cols-3">
+                        <?php
+                        foreach ($commodities as $commodity) {
+                            $isChecked = in_array($commodity['id'], $current_property_commodities) ? 'checked' : '';
+                        ?>
+                            <div class='input-wrapper checkbox-input'>
+                                <input type='checkbox' name='commodities[]' value='<?php echo $commodity['id'] ?>' id='commodity_<?php echo $commodity['id'] ?>' <?php echo $isChecked; ?>>
+                                <label for='commodity_<?php echo $commodity['id'] ?>'><?php echo $commodity['name'] ?></label>
+                            </div>
+                        <?php } ?>
+                    </div>
+
                 </div>
                 <div class="manage-section">
                     <div class="input-wrapper select-input">

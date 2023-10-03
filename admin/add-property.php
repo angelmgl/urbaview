@@ -36,6 +36,19 @@ if ($types_result->num_rows > 0) {
     }
 }
 
+// recuperar registros de commodities
+$commodities_query = "SELECT * FROM commodities";
+$commodities_result = $mydb->query($commodities_query);
+
+$commodities = [];
+if ($commodities_result->num_rows > 0) {
+    while ($row = $commodities_result->fetch_assoc()) {
+        $commodities[] = $row;
+    }
+}
+
+$mydb->close();
+
 ?>
 
 <!DOCTYPE html>
@@ -165,6 +178,18 @@ if ($types_result->num_rows > 0) {
                             <label for="parking_capacity">Estacionamiento:</label>
                             <input type="number" id="parking_capacity" name="parking_capacity" value="<?php echo get_form_data('parking_capacity'); ?>">
                         </div>
+                    </div>
+
+                    <h2>Commodities</h2>
+
+                    <div class="grid cols-3">
+                        <?php
+                        foreach ($commodities as $commodity) { ?>
+                            <div class='input-wrapper checkbox-input'>
+                                <input type='checkbox' name='commodities[]' value='<?php echo $commodity['id'] ?>' id='commodity_<?php echo $commodity['id'] ?>'>
+                                <label for='commodity_<?php echo $commodity['id'] ?>'><?php echo $commodity['name'] ?></label>
+                            </div>
+                        <?php } ?>
                     </div>
                 </div>
                 <div class="manage-section">

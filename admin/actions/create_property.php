@@ -35,6 +35,7 @@ $year = $_POST['year'];
 $parking_capacity = $_POST['parking_capacity'];
 $building_floors = $_POST['building_floors'];
 $status = $_POST['status'];
+$commodities = isset($_POST['commodities']) ? $_POST['commodities'] : [];
 
 // Iniciar la variable $thumbnail_path con NULL
 $thumbnail_path = NULL;
@@ -61,52 +62,46 @@ if ($_FILES['thumbnail']['error'] == UPLOAD_ERR_OK) {
     }
 }
 
-
-// Conexión a la base de datos y preparación de la consulta.
-$stmt = $mydb->prepare("
-    INSERT INTO properties (title, slug, price, tour_url, user_id, property_type_id, thumbnail, rooms, bathrooms, lat, lng, department, city, neighborhood, code_ref, land_m2, land_width, land_length, build_m2, year, parking_capacity, building_floors, status) 
-    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-");
-
-$stmt->bind_param("ssisiisiiddssssiiiiiiis", $title, $slug, $price, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status);
+// Iniciar una transacción
+$mydb->begin_transaction();
 
 try {
-    // Intenta ejecutar la consulta
-    if ($stmt->execute()) {
-        $_SESSION['success'] = "Propiedad agregada exitosamente";
+    // Conexión a la base de datos y preparación de la consulta.
+    $stmt = $mydb->prepare("
+        INSERT INTO properties (title, slug, price, tour_url, user_id, property_type_id, thumbnail, rooms, bathrooms, lat, lng, department, city, neighborhood, code_ref, land_m2, land_width, land_length, build_m2, year, parking_capacity, building_floors, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    ");
+    
+    $stmt->bind_param("ssisiisiiddssssiiiiiiis", $title, $slug, $price, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status);
 
-        // Cerrar la sentencia y la conexión antes de redirigir
-        $stmt->close();
-        $mydb->close();
-
-        header("Location: " . BASE_URL . "/admin/properties.php");
-        exit;
-    } else {
-        // Si hay un error, lo manejamos
-        handleFormError("Error: " . $stmt->error, array(
-            'title' => $title,
-            'price' => $price,
-            'tour_url' => $tour_url,
-            'rooms' => $rooms,
-            'bathrooms' => $bathrooms,
-            'lat' => $lat,
-            'lng' => $lng,
-            'department' => $department,
-            'city' => $city,
-            'neighborhood' => $neighborhood,
-            'code_ref' => $code_ref,
-            'land_m2' => $land_m2,
-            'land_width' => $land_width,
-            'land_length' => $land_length,
-            'build_m2' => $build_m2,
-            'year' => $year,
-            'parking_capacity' => $parking_capacity,
-            'building_floors' => $building_floors,
-        ), "/admin/add-property.php");
+    if (!$stmt->execute()) {
+        throw new Exception("Error al insertar la propiedad: " . $stmt->error);
     }
+
+    $property_id = $stmt->insert_id;  // Obtener el ID del registro recién insertado.
+
+    foreach ($commodities as $commodity_id) {
+        $commodity_stmt = $mydb->prepare("INSERT INTO property_commodities (property_id, commodity_id) VALUES (?, ?)");
+        $commodity_stmt->bind_param("ii", $property_id, $commodity_id);
+        
+        if (!$commodity_stmt->execute()) {
+            throw new Exception("Error al insertar comodidad: " . $commodity_stmt->error);
+        }
+        
+        $commodity_stmt->close();
+    }
+
+    // Si todo ha ido bien, confirmamos la transacción
+    $mydb->commit();
+
+    $_SESSION['success'] = "Propiedad agregada exitosamente";
+    header("Location: " . BASE_URL . "/admin/properties.php");
+    exit;
+    
 } catch (Exception $e) {
-    // Esto atrapará cualquier excepción o error fatal que ocurra
-    handleFormError("Error: " . $e->getMessage(), array(
+    $mydb->rollback();  // Revertimos las operaciones realizadas durante la transacción
+
+    handleFormError($e->getMessage(), array(
         'title' => $title,
         'price' => $price,
         'tour_url' => $tour_url,

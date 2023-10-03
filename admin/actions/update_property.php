@@ -70,6 +70,42 @@ try {
     if ($stmt->execute()) {
         $_SESSION['success'] = "Propiedad actualizada exitosamente";
         $stmt->close();
+
+        // Manejar la actualización de las commodities
+
+        // 1. Obtener las commodities actuales de la propiedad
+        $current_property_commodities_query = "SELECT commodity_id FROM property_commodities WHERE property_id = ?";
+        $pc_stmt = $mydb->prepare($current_property_commodities_query);
+        $pc_stmt->bind_param("i", $property_id);
+        $pc_stmt->execute();
+        $property_commodities_result = $pc_stmt->get_result();
+        $current_property_commodities = [];
+        while ($row = $property_commodities_result->fetch_assoc()) {
+            $current_property_commodities[] = $row['commodity_id'];
+        }
+        $pc_stmt->close();
+
+        // 2. Determinar qué agregar y qué eliminar
+        $form_commodities = $_POST['commodities'];
+        $toAdd = array_diff($form_commodities, $current_property_commodities);
+        $toRemove = array_diff($current_property_commodities, $form_commodities);
+
+        // 3. Agregar los registros nuevos
+        foreach ($toAdd as $commodity_id) {
+            $stmt = $mydb->prepare("INSERT INTO property_commodities (property_id, commodity_id) VALUES (?, ?)");
+            $stmt->bind_param("ii", $property_id, $commodity_id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
+        // 4. Eliminar registros
+        foreach ($toRemove as $commodity_id) {
+            $stmt = $mydb->prepare("DELETE FROM property_commodities WHERE property_id = ? AND commodity_id = ?");
+            $stmt->bind_param("ii", $property_id, $commodity_id);
+            $stmt->execute();
+            $stmt->close();
+        }
+
         $mydb->close();
         header("Location: " . BASE_URL . "/admin/properties.php");
         exit;
@@ -82,5 +118,3 @@ try {
 
 $stmt->close();
 $mydb->close();
-
-?>
