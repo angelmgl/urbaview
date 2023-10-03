@@ -39,14 +39,17 @@ if (isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
             if (move_uploaded_file($tmp_name, $final_system_path)) {
                 $images_paths[] = $final_url_path;
 
+                // Obtener el ancho y alto de la imagen
+                list($img_width, $img_height) = getimagesize($final_system_path);
+
                 // Insertar la ruta de la imagen en la base de datos
                 $stmt = $mydb->prepare("
-                    INSERT INTO images (property_id, image_path)
-                    VALUES (?, ?);
+                    INSERT INTO images (property_id, image_path, width, height)
+                    VALUES (?, ?, ?, ?);
                 ");
 
                 // Asociamos los valores
-                $stmt->bind_param("is", $property_id, $final_url_path);
+                $stmt->bind_param("isii", $property_id, $final_url_path, $img_width, $img_height);
 
                 // Ejecutamos la consulta
                 if (!$stmt->execute()) {
@@ -60,7 +63,6 @@ if (isset($_FILES['images']) && is_array($_FILES['images']['name'])) {
             }
         }
     }
-
 }
 
 // Todos los archivos han sido procesados y almacenados.

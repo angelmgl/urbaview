@@ -38,7 +38,7 @@ $property_id = $property['property_id'];
 $images = [];
 
 $stmt = $mydb->prepare("
-    SELECT image_path, id as image_id
+    SELECT image_path, id as image_id, width, height
     FROM images 
     WHERE property_id = ?
 ");
@@ -50,7 +50,9 @@ $result = $stmt->get_result();
 while ($row = $result->fetch_assoc()) {
     $images[] = [
         'image_path' => $row['image_path'],
-        'image_id' => $row['image_id']
+        'image_id' => $row['image_id'],
+        'width' => $row['width'],
+        'height' => $row['height'],
     ];
 }
 
@@ -74,7 +76,7 @@ $whatsapp = $property['whatsapp'];
 
 $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
-print_r($property);
+//print_r($property);
 
 ?>
 <!DOCTYPE html>
@@ -83,8 +85,8 @@ print_r($property);
 <head>
     <?php include './components/meta.php'; ?>
     <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/photoswipe.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="<?php echo BASE_URL ?>/assets/css/lightbox.min.css" />
 </head>
 
 <body>
@@ -175,7 +177,6 @@ print_r($property);
     </main>
     <script src="<?php echo BASE_URL ?>/assets/js/accordeon.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/map.js"></script>
-    <script src="<?php echo BASE_URL ?>/assets/js/lightbox-plus-jquery.min.js"></script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0&callback=initMap&v=weekly" async></script>
 </body>
