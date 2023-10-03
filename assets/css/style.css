@@ -373,7 +373,9 @@ p {
 }
 
 .property-card .photos-grid .property-photo {
-    max-width: 100%;
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
 }
 
 .property-card .photos-grid .photos-overflow {
@@ -388,7 +390,8 @@ p {
 
 .property-card .photos-grid .overflow-quantity {
     font-weight: 600;
-    margin-left: 5px;
+    display: block;
+    margin-left: -15px;
 }
 
 .property-card .details-container {
@@ -466,6 +469,10 @@ p {
 
     .property-card .see-more {
         padding: 10px 0;
+    }
+
+    .property-card .photos-grid .property-photo {
+        height: 80px;
     }
 }
 
