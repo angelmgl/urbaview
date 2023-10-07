@@ -32,10 +32,10 @@ try {
         header("Location: " . BASE_URL . "/admin/edit-user.php?username=" . $username);
         exit;
     } else {
-        handleFormError("Error: " . $stmt->error, array(), "/admin/edit-user.php?username=" . $username);
+        handle_form_error("Error: " . $stmt->error, array(), "/admin/edit-user.php?username=" . $username);
     }
 } catch (Exception $e) {
-    handleFormError("Error: " . $e->getMessage(), array(), "/admin/edit-user.php?username=" . $username);
+    handle_form_error("Error: " . $e->getMessage(), array(), "/admin/edit-user.php?username=" . $username);
 }
 
 $stmt->close();

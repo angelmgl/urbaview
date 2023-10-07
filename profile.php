@@ -2,6 +2,7 @@
 
 require './config/config.php';
 require './admin/helpers/users.php';
+require './admin/helpers/properties.php';
 
 session_start();
 $username = $_GET["username"];
@@ -57,7 +58,8 @@ if ($result->num_rows > 0) {
             $properties[$row['property_id']] = [
                 'property_id' => $row['property_id'],
                 'title' => $row['title'],
-                'price' => $row['price'],
+                'price_usd' => $row['price_usd'],
+                'price_gs' => $row['price_gs'],
                 'rooms' => $row['rooms'],
                 'bathrooms' => $row['bathrooms'],
                 'code_ref' => $row['code_ref'],

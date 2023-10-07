@@ -1,3 +1,9 @@
+<?php 
+
+$is_usd = $property["price_usd"] > 0; 
+
+?>
+
 <article class="property-card">
     <div class="card-header">
         <h2 class="property-title"><?php echo $property["title"] ?></h2>
@@ -5,7 +11,7 @@
     </div>
     <div class="card-body">
 
-        <div class="property-thumbnail" style="background-image: url(<?php echo BASE_URL . $property["thumbnail"] ?>);">
+        <div class="property-thumbnail" style="background-image: url(<?php echo get_thumbnail($property) ?>);">
             <a href="<?php echo BASE_URL . "/tour/" . $property["slug"] ?>">
                 <div class="play">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
@@ -19,7 +25,9 @@
             <div class="details-container">
                 <div class="detail price">
                     <h3 class="detail-title">Precio</h3>
-                    <p class="detail-content">U$D <?php echo $property["price"] ?></p>
+                    <p class="detail-content">
+                        <?php echo $is_usd ? "USD " . format_number($property["price_usd"]) : "GS " . format_number($property["price_gs"]) ?>
+                    </p>
                 </div>
                 <div class="detail rooms">
                     <h3 class="detail-title">Habitaciones</h3>

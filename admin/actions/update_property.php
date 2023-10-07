@@ -43,20 +43,13 @@ $upload_url_dir = "/uploads/tours/";
 
 $thumbnail_path = $old_thumbnail; // Inicializamos con la imagen anterior
 
-// Manejar la subida de la imagen
-if (isset($_FILES['thumbnail']) && $_FILES['thumbnail']['error'] == UPLOAD_ERR_OK) {
-    $tmp_name = $_FILES['thumbnail']['tmp_name'];
-    $file_extension = pathinfo($_FILES['thumbnail']['name'], PATHINFO_EXTENSION);
-    $filename_without_extension = pathinfo($_FILES['thumbnail']['name'], PATHINFO_FILENAME);
-    $new_name = $filename_without_extension . "_" . time() . "." . $file_extension;
-    $final_system_path = $upload_system_dir . $new_name;
-    $final_url_path = $upload_url_dir . $new_name;
-
-    if (move_uploaded_file($tmp_name, $final_system_path)) {
-        $thumbnail_path = $final_url_path;
-    } else {
-        handleFormError("No se pudo subir la imagen.", $_POST, "/admin/edit-property.php");
+// Manejar la subida de la foto destacada
+try {
+    if (isset($_FILES['thumbnail'])) {
+        $thumbnail_path = upload_photo($_FILES['thumbnail'], $upload_system_dir, $upload_url_dir);
     }
+} catch (Exception $e) {
+    handle_form_error($e->getMessage(), $_POST, "/admin/edit-property.php");
 }
 
 // Conexión a la base de datos y preparación de la consulta.
@@ -111,10 +104,10 @@ try {
         header("Location: " . BASE_URL . "/admin/properties.php");
         exit;
     } else {
-        handleFormError("Error: " . $stmt->error, $_POST, "/admin/edit-property.php?id=" . $property_id);
+        handle_form_error("Error: " . $stmt->error, $_POST, "/admin/edit-property.php?id=" . $property_id);
     }
 } catch (Exception $e) {
-    handleFormError("Error: " . $e->getMessage(), $_POST, "/admin/edit-property.php?id=" . $property_id);
+    handle_form_error("Error: " . $e->getMessage(), $_POST, "/admin/edit-property.php?id=" . $property_id);
 }
 
 $stmt->close();

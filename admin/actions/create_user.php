@@ -31,22 +31,12 @@ $upload_system_dir = "../../uploads/users/"; // Asegúrate de tener este directo
 $upload_url_dir = "/uploads/users/";
 
 // Manejar la subida de la foto de perfil
-if ($_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
-    $tmp_name = $_FILES['profile_picture']['tmp_name'];
-    
-    $file_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_EXTENSION);
-    $filename_without_extension = pathinfo($_FILES['profile_picture']['name'], PATHINFO_FILENAME);
-    
-    $new_name = $filename_without_extension . "_" . time() . "." . $file_extension;
-    
-    $final_system_path = $upload_system_dir . $new_name; 
-    $final_url_path = $upload_url_dir . $new_name; 
-
-    if (move_uploaded_file($tmp_name, $final_system_path)) {
-        $profile_picture_path = $final_url_path;
-    } else {
-        handleFormError("No se pudo subir la imagen de perfil.", $_POST, "/admin/add-user.php");
+try {
+    if (isset($_FILES['profile_picture'])) {
+        $profile_picture_path = upload_photo($_FILES['profile_picture'], $upload_system_dir, $upload_url_dir);
     }
+} catch (Exception $e) {
+    handle_form_error($e->getMessage(), $_POST, "/admin/add-user.php");
 }
 
 // Conexión a la base de datos y preparación de la consulta.
@@ -70,7 +60,7 @@ try {
         exit;
     } else {
         // Si hay un error, lo manejamos
-        handleFormError("Error: " . $stmt->error, array(
+        handle_form_error("Error: " . $stmt->error, array(
             'email' => $email,
             'full_name' => $full_name,
             'username' => $username,
@@ -83,7 +73,7 @@ try {
     }
 } catch (Exception $e) {
     // Esto atrapará cualquier excepción o error fatal que ocurra
-    handleFormError("Error: " . $e->getMessage(), array(
+    handle_form_error("Error: " . $e->getMessage(), array(
         'email' => $email,
         'full_name' => $full_name,
         'username' => $username,

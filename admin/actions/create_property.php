@@ -44,23 +44,13 @@ $thumbnail_path = NULL;
 $upload_system_dir = "../../uploads/tours/"; // Asegúrate de tener este directorio creado y con permisos de escritura
 $upload_url_dir = "/uploads/tours/";
 
-// Manejar la subida de la foto de perfil
-if ($_FILES['thumbnail']['error'] == UPLOAD_ERR_OK) {
-    $tmp_name = $_FILES['thumbnail']['tmp_name'];
-    
-    $file_extension = pathinfo($_FILES['thumbnail']['name'], PATHINFO_EXTENSION);
-    $filename_without_extension = pathinfo($_FILES['thumbnail']['name'], PATHINFO_FILENAME);
-    
-    $new_name = $filename_without_extension . "_" . time() . "." . $file_extension;
-    
-    $final_system_path = $upload_system_dir . $new_name; 
-    $final_url_path = $upload_url_dir . $new_name; 
-
-    if (move_uploaded_file($tmp_name, $final_system_path)) {
-        $thumbnail_path = $final_url_path;
-    } else {
-        handleFormError("No se pudo subir la imagen de perfil.", $_POST, "/admin/add-user.php");
+// Manejar la subida de la foto destacada
+try {
+    if (isset($_FILES['thumbnail'])) {
+        $thumbnail_path = upload_photo($_FILES['thumbnail'], $upload_system_dir, $upload_url_dir);
     }
+} catch (Exception $e) {
+    handle_form_error($e->getMessage(), $_POST, "/admin/add-property.php");
 }
 
 // Iniciar una transacción
@@ -72,7 +62,7 @@ try {
         INSERT INTO properties (title, slug, price_usd, price_gs, tour_url, user_id, property_type_id, thumbnail, rooms, bathrooms, lat, lng, department, city, neighborhood, code_ref, land_m2, land_width, land_length, build_m2, year, parking_capacity, building_floors, status) 
         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
-    
+
     $stmt->bind_param("ssiisiisiiddssssiiiiiiis", $title, $slug, $price_usd, $price_gs, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status);
 
     if (!$stmt->execute()) {
@@ -84,11 +74,11 @@ try {
     foreach ($commodities as $commodity_id) {
         $commodity_stmt = $mydb->prepare("INSERT INTO property_commodities (property_id, commodity_id) VALUES (?, ?)");
         $commodity_stmt->bind_param("ii", $property_id, $commodity_id);
-        
+
         if (!$commodity_stmt->execute()) {
             throw new Exception("Error al insertar comodidad: " . $commodity_stmt->error);
         }
-        
+
         $commodity_stmt->close();
     }
 
@@ -98,11 +88,10 @@ try {
     $_SESSION['success'] = "Propiedad agregada exitosamente";
     header("Location: " . BASE_URL . "/admin/properties.php");
     exit;
-    
 } catch (Exception $e) {
     $mydb->rollback();  // Revertimos las operaciones realizadas durante la transacción
 
-    handleFormError($e->getMessage(), array(
+    handle_form_error($e->getMessage(), array(
         'title' => $title,
         'tour_url' => $tour_url,
         'rooms' => $rooms,

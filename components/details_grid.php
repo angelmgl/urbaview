@@ -2,10 +2,6 @@
 
 $is_usd = $property["price_usd"] > 0; 
 
-function format_number($number) {
-    return number_format($number, 0, ',', '.');
-}
-
 ?>
 
 <div id="details-grid">

@@ -24,3 +24,7 @@ function generate_slug($title) {
 
     return $slug;
 }
+
+function format_number($number) {
+    return number_format($number, 0, ',', '.');
+}

@@ -31,24 +31,12 @@ $upload_url_dir = "/uploads/users/";
 $profile_picture_path = $old_photo; // Inicializamos con la imagen anterior
 
 // Manejar la subida de la foto de perfil
-if (isset($_FILES['profile_picture']) && $_FILES['profile_picture']['error'] == UPLOAD_ERR_OK) {
-    $tmp_name = $_FILES['profile_picture']['tmp_name'];
-    $original_name = basename($_FILES['profile_picture']['name']);
-    
-    // Obtener la extensión del archivo
-    $file_extension = pathinfo($original_name, PATHINFO_EXTENSION);
-    
-    // Crear un nuevo nombre para el archivo añadiendo una marca de tiempo
-    $name = pathinfo($original_name, PATHINFO_FILENAME) . "_" . time() . "." . $file_extension;
-
-    $final_system_path = $upload_system_dir . $name; // Esta es la ruta que usamos para mover el archivo
-    $final_url_path = $upload_url_dir . $name; // Esta es la ruta que guardamos en la BD
-
-    if (move_uploaded_file($tmp_name, $final_system_path)) {
-        $profile_picture_path = $final_url_path;
-    } else {
-        handleFormError("No se pudo subir la imagen de perfil.", $_POST, "/admin/edit-user.php?username=" . $username);
+try {
+    if (isset($_FILES['profile_picture'])) {
+        $profile_picture_path = upload_photo($_FILES['profile_picture'], $upload_system_dir, $upload_url_dir);
     }
+} catch (Exception $e) {
+    handle_form_error($e->getMessage(), $_POST, "/admin/edit-user.php");
 }
 
 // Conexión a la base de datos y preparación de la consulta.
@@ -70,7 +58,7 @@ try {
         header("Location: " . BASE_URL . "/admin/users.php");
         exit;
     } else {
-        handleFormError("Error: " . $stmt->error, array(
+        handle_form_error("Error: " . $stmt->error, array(
             'email' => $email,
             'full_name' => $full_name,
             'username' => $username,
@@ -82,7 +70,7 @@ try {
         ), "/admin/edit-user.php?username=" . $username);
     }
 } catch (Exception $e) {
-    handleFormError("Error: " . $e->getMessage(), array(
+    handle_form_error("Error: " . $e->getMessage(), array(
         'email' => $email,
         'full_name' => $full_name,
         'username' => $username,

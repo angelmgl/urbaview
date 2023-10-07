@@ -35,11 +35,11 @@ try {
         exit;
     } else {
         // Si hay un error, lo manejamos
-        handleFormError("Error: " . $stmt->error, array(), "/admin/options.php");
+        handle_form_error("Error: " . $stmt->error, array(), "/admin/options.php");
     }
 } catch (Exception $e) {
     // Esto atrapará cualquier excepción o error fatal que ocurra
-    handleFormError("Error: " . $e->getMessage(), array(), "/admin/options.php");
+    handle_form_error("Error: " . $e->getMessage(), array(), "/admin/options.php");
 }
 
 $stmt->close();
