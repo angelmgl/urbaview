@@ -1,9 +1,3 @@
-<?php 
-
-$is_usd = $property["price_usd"] > 0; 
-
-?>
-
 <article class="property-card">
     <div class="card-header">
         <h2 class="property-title"><?php echo $property["title"] ?></h2>
@@ -26,7 +20,7 @@ $is_usd = $property["price_usd"] > 0;
                 <div class="detail price">
                     <h3 class="detail-title">Precio</h3>
                     <p class="detail-content">
-                        <?php echo $is_usd ? "USD " . format_number($property["price_usd"]) : "GS " . format_number($property["price_gs"]) ?>
+                        <?php echo get_price($property) ?>
                     </p>
                 </div>
                 <div class="detail rooms">

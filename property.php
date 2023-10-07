@@ -58,8 +58,6 @@ while ($row = $result->fetch_assoc()) {
     ];
 }
 
-$stmt->close();
-
 $property['images'] = $images;
 
 // recuperar los videos de la propiedad
@@ -86,6 +84,30 @@ $stmt->close();
 
 $property['videos'] = $videos;
 
+// recuperar las commodities de la propiedad
+$commodities = [];
+
+$stmt = $mydb->prepare("
+    SELECT c.name
+    FROM property_commodities pc
+    JOIN commodities c ON pc.commodity_id = c.id
+    WHERE pc.property_id = ?
+");
+$stmt->bind_param("i", $property_id);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $commodities[] = [
+        'name' => $row['name'],
+    ];
+}
+
+$stmt->close();
+
+$property['commodities'] = $commodities;
+
 $mydb->close();
 
 if (!isset($property) || ($property['status'] != 'publicado' && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
@@ -101,8 +123,6 @@ $instagram = $property['instagram'];
 $whatsapp = $property['whatsapp'];
 
 $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
-
-// print_r($property);
 
 ?>
 <!DOCTYPE html>
