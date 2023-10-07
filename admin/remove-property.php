@@ -61,7 +61,7 @@ if ($property === null) {
 
         <div class="remove-actions">
             <form action="<?php echo BASE_URL ?>/admin/actions/delete_property.php" method="POST">
-                <input type="hidden" name="slug" value="<?php echo $property["slug"]; ?>">
+                <input type="hidden" name="id" value="<?php echo $property["id"]; ?>">
                 <button type="submit" class="btn btn-primary">Si, eliminar</button>
             </form>
             <a href="<?php echo BASE_URL ?>/admin/properties.php" class="btn btn-secondary">No, cancelar</a>
