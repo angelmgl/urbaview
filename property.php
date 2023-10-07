@@ -35,6 +35,8 @@ if ($result->num_rows > 0) {
 $stmt->close();
 
 $property_id = $property['property_id'];
+
+// recuperar las imágenes de la propiedad
 $images = [];
 
 $stmt = $mydb->prepare("
@@ -60,6 +62,30 @@ $stmt->close();
 
 $property['images'] = $images;
 
+// recuperar los videos de la propiedad
+$videos = [];
+
+$stmt = $mydb->prepare("
+    SELECT youtube_url, id as video_id
+    FROM videos
+    WHERE property_id = ?
+");
+$stmt->bind_param("i", $property_id);
+
+$stmt->execute();
+
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $videos[] = [
+        'youtube_url' => $row['youtube_url'],
+        'video_id' => $row['video_id'],
+    ];
+}
+
+$stmt->close();
+
+$property['videos'] = $videos;
+
 $mydb->close();
 
 if (!isset($property) || ($property['status'] != 'publicado' && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
@@ -76,7 +102,7 @@ $whatsapp = $property['whatsapp'];
 
 $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
-//print_r($property);
+// print_r($property);
 
 ?>
 <!DOCTYPE html>
@@ -153,14 +179,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
                 </div>
                 <div class="videos-container">
                     <h3 class="detail-title">Videos</h3>
-                    <div class="videos-grid">
-                        <div class="video">
-                            <iframe src="https://www.youtube.com/embed/u31qwQUeGuM?si=5aEQRc5Scp4oQdji&amp;controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                        <div class="video">
-                            <iframe src="https://www.youtube.com/embed/u31qwQUeGuM?si=5aEQRc5Scp4oQdji&amp;controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                        </div>
-                    </div>
+                    <?php include './components/video_slider.php' ?>
                 </div>
             </div>
             <div class="location">

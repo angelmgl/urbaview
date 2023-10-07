@@ -87,6 +87,10 @@ p {
     background: #080b5f;
 }
 
+.no-pointer {
+    pointer-events: none;
+}
+
 /* HEADER COMPONENT */
 
 #site-header {
@@ -678,7 +682,8 @@ p {
     width: 65%;
 }
 
-#property-page .photo-slider {
+#property-page .photo-slider,
+#property-page .video-slider {
     width: 94%;
     margin-left: 0;
     height: 160px;
@@ -692,18 +697,23 @@ p {
     object-fit: cover;
 }
 
-#property-page .photo-slider .swiper-button-next,
-#property-page .photo-slider .swiper-button-prev {
+#property-page .swiper-button-next,
+#property-page .swiper-button-prev {
     height: 40px;
     width: 40px;
     border-radius: 50%;
     background: white;
 }
 
-#property-page .photo-slider .swiper-button-next:after,
-#property-page .photo-slider .swiper-button-prev:after {
+#property-page .swiper-button-next:after,
+#property-page .swiper-button-prev:after {
     font-size: 18px;
     color: #785dfb;
+}
+
+#property-page #videos .swiper-button-next,
+#property-page #videos .swiper-button-prev {
+    transform: translateY(-15px);
 }
 
 #property-page .media .videos-container {
@@ -715,13 +725,9 @@ p {
     margin-left: 5px;
 }
 
-#property-page .media .videos-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
-}
-
 #property-page .media .video {
+    display: block;
+    width: 100%;
     position: relative;
     padding-bottom: 56.25%; /* 16:9 ratio */
     height: 0;
@@ -791,9 +797,17 @@ p {
         margin-top: 40px;
     }
 
-    #property-page .photo-slider {
+    #property-page .photo-slider,
+    #property-page .video-slider {
         width: 100%;
         height: 220px;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    #property-page #videos .swiper-button-next,
+    #property-page #videos .swiper-button-prev {
+        transform: translateY(0);
     }
 }
 
@@ -826,11 +840,6 @@ p {
     #property-page #details-grid .detail-content {
         font-size: 22px;
         margin-bottom: 15px;
-    }
-
-    #property-page .media .videos-grid,
-    #property-page .media .photos-grid {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 
