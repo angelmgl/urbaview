@@ -86,7 +86,7 @@ try {
         $pc_stmt->close();
 
         // 2. Determinar qué agregar y qué eliminar
-        $form_commodities = $_POST['commodities'];
+        $form_commodities = isset($_POST['commodities']) && !empty($_POST['commodities']) ? $_POST['commodities'] : [];
         $toAdd = array_diff($form_commodities, $current_property_commodities);
         $toRemove = array_diff($current_property_commodities, $form_commodities);
 
