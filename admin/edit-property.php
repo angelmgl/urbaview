@@ -267,6 +267,8 @@ $mydb->close();
                     <input id="submit-btn" class="btn btn-primary" type="submit" value="Actualizar Tour">
 
                     <a class="change-password" href="<?php echo BASE_URL ?>/admin/images.php?property_id=<?php echo $property["id"]; ?>">Administrar imágenes</a>
+
+                    <a class="change-password" href="<?php echo BASE_URL ?>/admin/videos.php?property_id=<?php echo $property["id"]; ?>">Administrar videos</a>
                 </div>
             </form>
             <?php unset($_SESSION['form_data']); ?>

@@ -30,7 +30,7 @@ if ($result->num_rows > 0) {
 $stmt->close();
 $mydb->close();
 
-// Si no se encontró la opción, redirige a la página de propiedades
+// Si no se encontró la imagen, redirige a la página de propiedades
 if ($image === null) {
     header("Location: " . BASE_URL . "/admin/properties.php");
     exit;

@@ -10,19 +10,19 @@ if ($_SESSION['role'] !== 'admin') {
     exit;
 }
 
-// Prepara la sentencia para eliminar la imagen
-$stmt = $mydb->prepare("DELETE FROM images WHERE id = ?");
+// Prepara la sentencia para eliminar el video
+$stmt = $mydb->prepare("DELETE FROM videos WHERE id = ?");
 $stmt->bind_param('s', $_POST['id']);
 
 // Ejecutar la sentencia
 $stmt->execute();
 
-$_SESSION['success'] = "Imagen eliminada satisfactoriamente.";
+$_SESSION['success'] = "Video eliminado satisfactoriamente.";
 
 $stmt->close();
 $mydb->close();
 
-// Redirige de vuelta a la lista de imagenes
-header("Location: " . BASE_URL . "/admin/images.php?property_id=" . $_POST['property_id']);
+// Redirige de vuelta a la página de los videos
+header("Location: " . BASE_URL . "/admin/videos.php?property_id=" . $_POST['property_id']);
 exit;
 

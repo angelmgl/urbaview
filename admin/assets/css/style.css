@@ -464,7 +464,8 @@ h1 {
     height: 350px;
 }
 
-.images-input {
+.images-input,
+.video-input {
     width: 100%;
     padding: 6px 40px;
     display: flex;
@@ -475,7 +476,8 @@ h1 {
     margin-bottom: 50px;
 }
 
-.images-input label {
+.images-input label,
+.video-input label {
     min-width: max-content;
     font-size: 14px;
     text-transform: uppercase;
@@ -490,13 +492,22 @@ h1 {
     font-size: 16px;
 }
 
-.images-grid {
+.video-input input {
+    display: block;
+    width: 100%;
+    padding: 7px 20px;
+    border: none;
+    border-bottom: 1px solid #c0c0c0;
+}
+
+.images-grid, .videos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
 }
 
-.images-grid .image-container {
+.images-grid .image-container,
+.videos-grid .video-container {
     width: 100%;
     height: 100%;
     display: flex;
@@ -510,7 +521,13 @@ h1 {
     max-width: 100%;
 }
 
-.images-grid .image-container .delete {
+.videos-grid .video-container iframe {
+    width: 100%;
+    height: 230px;
+}
+
+.images-grid .image-container .delete,
+.videos-grid .video-container .delete {
     position: absolute;
     top: 10px;
     right: 10px;

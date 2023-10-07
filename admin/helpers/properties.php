@@ -1,5 +1,6 @@
 <?php 
 
+// obtener la url del thumbnail de una propiedad, o sino el placeholder
 function get_thumbnail($property) {
     if(isset($property["thumbnail"]) && $property["thumbnail"]) {
         return BASE_URL . $property["thumbnail"];
@@ -8,6 +9,7 @@ function get_thumbnail($property) {
     }
 }
 
+// generar el slug a partir del título de una propiedad
 function generate_slug($title) {
     // Convertir a minúsculas y quitar acentos
     $slug = strtolower(iconv('UTF-8', 'ASCII//TRANSLIT', $title));
@@ -25,6 +27,15 @@ function generate_slug($title) {
     return $slug;
 }
 
+// agregar puntos separadores de centenas a precios de propiedades
 function format_number($number) {
     return number_format($number, 0, ',', '.');
+}
+
+// función que recibe la url de un video y devuelve el id necesario para el iframe de videos
+function get_video_id($video_url) {
+    if (preg_match('/youtu\.be\/([a-zA-Z0-9_\-]+\?si=[a-zA-Z0-9_\-]+)/', $video_url, $matches)) {
+        return $matches[1];
+    }
+    return false;
 }
