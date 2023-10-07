@@ -5,8 +5,12 @@ require './admin/helpers/properties.php';
 require './admin/helpers/users.php';
 
 session_start();
-$slug = $_GET['slug'];
 
+$session_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+$session_username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
+$session_role = isset($_SESSION["role"]) ? $_SESSION["role"] : null;
+
+$slug = $_GET['slug'];
 $property = null;
 
 // preparar la consulta
@@ -136,7 +140,13 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 </head>
 
 <body>
-    <?php include './components/header.php'; ?>
+    <?php
+    if ($session_id) {
+        include './components/in_header.php';
+    } else {
+        include './components/out_header.php';
+    }
+    ?>
     <main id="property-page">
         <section class="iframe-container">
             <iframe src='<?php echo $property["tour_url"] ?>' frameborder='0' allowfullscreen allow='xr-spatial-tracking'></iframe>

@@ -32,7 +32,7 @@ if ($user && password_verify($password, $user['password'])) {
         header("Location: " . BASE_URL . "/admin/dashboard.php");
         exit;
     } else if ($user['role'] === 'user') {
-        header("Location: " . BASE_URL . "/");
+        header("Location: " . BASE_URL . "/u/" . $username);
         exit;
     }
 } else {

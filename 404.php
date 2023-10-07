@@ -14,7 +14,7 @@ $title = "404 not found";
 </head>
 
 <body>
-    <?php include './components/header.php'; ?>
+    <?php include './components/out_header.php'; ?>
 
     <main id="not-found">
         <div class="container px py">

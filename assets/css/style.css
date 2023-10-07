@@ -91,16 +91,59 @@ p {
     pointer-events: none;
 }
 
-/* HEADER COMPONENT */
+/* OUT HEADER COMPONENT */
 
-#site-header {
+#out-header {
     padding: 20px 0;
     background-color: #080b5f;
 }
 
-#site-header #site-logo {
+#out-header #site-logo {
     display: block;
     margin: 0 auto;
+}
+
+/* IN HEADER COMPONENT */
+
+#in-header {
+    padding: 20px 0;
+    background-color: #080b5f;
+}
+
+#in-header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#nav-links .nav-link {
+    color: white;
+    margin-left: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+#nav-links .logout-btn {
+    padding: 0;
+    margin-left: 20px;
+    background: transparent;
+    color: white;
+    font-size: 20px;
+    transform: translateY(2px);
+    cursor: pointer;
+    border: none;
+    outline: none;
+}
+
+#nav-links .nav-link:hover,
+#nav-links .logout-btn:hover {
+    color: yellow;
 }
 
 /* FOOTER COMPONENT */

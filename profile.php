@@ -5,6 +5,11 @@ require './admin/helpers/users.php';
 require './admin/helpers/properties.php';
 
 session_start();
+
+$session_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+$session_username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
+$session_role = isset($_SESSION["role"]) ? $_SESSION["role"] : null;
+
 $username = $_GET["username"];
 $user = null;
 $properties = [];
@@ -115,7 +120,13 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 </head>
 
 <body>
-    <?php include './components/header.php'; ?>
+    <?php
+    if ($session_id) {
+        include './components/in_header.php';
+    } else {
+        include './components/out_header.php';
+    }
+    ?>
     <main id="profile-page">
         <section id="profile-banner" class="container">
             <div class="main-data">
@@ -134,14 +145,14 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
             </div>
         </section>
         <section id="properties-listing" class="container px">
-            <?php 
+            <?php
             if (isset($user['properties']) && !empty($user['properties'])) {
                 foreach ($user['properties'] as $property) {
                     include './components/property_card.php';
                 }
             } else {
                 echo "<p>Este usuario no tiene propiedades publicadas...</p>";
-            }?>
+            } ?>
         </section>
     </main>
 </body>
