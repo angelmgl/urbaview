@@ -135,6 +135,10 @@ h1 {
     align-items: center;
 }
 
+.cursor-pointer {
+    cursor: pointer;
+}
+
 /* HEADER COMPONENT */
 
 #admin-header {

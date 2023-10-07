@@ -57,6 +57,11 @@ if ($_SESSION['role'] !== 'admin') {
                         <input type="password" id="password" name="password" required>
                     </div>
 
+                    <label class="cursor-pointer" for="show-password">
+                        <input type="checkbox" id="show-password"> 
+                        Mostrar contraseña
+                    </label>
+
                     <p>
                         No olvides que una contraseña segura tiene al menos 8 caracteres.
                     </p>

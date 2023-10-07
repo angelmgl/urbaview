@@ -71,8 +71,13 @@ if ($user === null) {
 
                     <div class="input-wrapper text-input">
                         <label for="password">Nueva contraseña:</label>
-                        <input type="text" id="password" name="password" required>
+                        <input type="password" id="password" name="password" required>
                     </div>
+
+                    <label class="cursor-pointer" for="show-password">
+                        <input type="checkbox" id="show-password"> 
+                        Mostrar contraseña
+                    </label>
 
                     <p>
                         No olvides que una contraseña segura tiene al menos 8 caracteres.

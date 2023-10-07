@@ -223,7 +223,7 @@ $mydb->close();
                         ?>
                             <div class='input-wrapper checkbox-input'>
                                 <input type='checkbox' name='commodities[]' value='<?php echo $commodity['id'] ?>' id='commodity_<?php echo $commodity['id'] ?>' <?php echo $isChecked; ?>>
-                                <label for='commodity_<?php echo $commodity['id'] ?>'><?php echo $commodity['name'] ?></label>
+                                <label class="cursor-pointer" for='commodity_<?php echo $commodity['id'] ?>'><?php echo $commodity['name'] ?></label>
                             </div>
                         <?php } ?>
                     </div>
