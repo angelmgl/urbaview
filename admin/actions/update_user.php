@@ -28,8 +28,6 @@ $old_photo = $_POST['old_photo'];
 $upload_system_dir = "../../uploads/users/";
 $upload_url_dir = "/uploads/users/";
 
-$profile_picture_path = $old_photo; // Inicializamos con la imagen anterior
-
 // Manejar la subida de la foto de perfil
 try {
     if (isset($_FILES['profile_picture'])) {
@@ -38,6 +36,8 @@ try {
 } catch (Exception $e) {
     handle_form_error($e->getMessage(), $_POST, "/admin/edit-user.php");
 }
+
+$profile_picture_path = $profile_picture_path ? $profile_picture_path : $old_photo;
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("

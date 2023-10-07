@@ -41,8 +41,6 @@ $old_thumbnail = $_POST['old_photo'];
 $upload_system_dir = "../../uploads/tours/";
 $upload_url_dir = "/uploads/tours/";
 
-$thumbnail_path = $old_thumbnail; // Inicializamos con la imagen anterior
-
 // Manejar la subida de la foto destacada
 try {
     if (isset($_FILES['thumbnail'])) {
@@ -51,6 +49,8 @@ try {
 } catch (Exception $e) {
     handle_form_error($e->getMessage(), $_POST, "/admin/edit-property.php");
 }
+
+$thumbnail_path = $thumbnail_path ? $thumbnail_path : $old_thumbnail;
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
