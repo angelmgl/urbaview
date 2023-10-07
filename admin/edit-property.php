@@ -125,15 +125,12 @@ $mydb->close();
                         <input type="text" id="tour_url" name="tour_url" value="<?php echo $property['tour_url']; ?>" required>
                     </div>
 
-                    <div class="grid cols-2">
-                        <div class="input-wrapper text-input">
-                            <label for="price">Precio: <span class="required">*</span></label>
-                            <input type="number" id="price" name="price" value="<?php echo $property['price']; ?>" required>
-                        </div>
+                    <div class="grid cols-3">
+                        <?php include './components/edit_price.php' ?>
 
                         <div class="input-wrapper text-input">
                             <label for="code_ref">Código de referencia:</label>
-                            <input type="text" id="code_ref" name="code_ref" value="<?php echo $property['code_ref']; ?>" required>
+                            <input type="text" id="code_ref" name="code_ref" value="<?php echo $property['code_ref']; ?>">
                         </div>
                     </div>
 

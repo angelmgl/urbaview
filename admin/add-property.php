@@ -88,10 +88,18 @@ $mydb->close();
                         <input type="text" id="tour_url" name="tour_url" value="<?php echo get_form_data('tour_url'); ?>" required>
                     </div>
 
-                    <div class="grid cols-2">
+                    <div class="grid cols-3">
+                        <div class="input-wrapper select-input">
+                            <label for="currency">Seleccionar moneda:</label>
+                            <select id="currency" name="currency">
+                                <option value="usd" selected>Dólares</option>
+                                <option value="gs">Guaraníes</option>
+                            </select>
+                        </div>
+
                         <div class="input-wrapper text-input">
-                            <label for="price">Precio: <span class="required">*</span></label>
-                            <input type="number" id="price" name="price" value="<?php echo get_form_data('price'); ?>" required>
+                            <label id="price-label">Precio USD: </label>
+                            <input type="number" id="price" name="price_usd" value="<?php echo get_form_data('price_usd'); ?>">
                         </div>
 
                         <div class="input-wrapper text-input">

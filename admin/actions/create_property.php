@@ -15,7 +15,8 @@ if ($_SESSION['role'] !== 'admin') {
 // Recibe los datos del formulario.
 $title = $_POST['title'];
 $slug = generate_slug($title);
-$price = $_POST['price'];
+$price_usd = isset($_POST['price_usd']) ? $_POST['price_usd'] : 0;
+$price_gs = isset($_POST['price_gs']) ? $_POST['price_gs'] : 0;
 $tour_url = $_POST['tour_url'];
 $user_id = $_POST['user_id'];
 $property_type_id = $_POST['property_type_id'];
@@ -68,11 +69,11 @@ $mydb->begin_transaction();
 try {
     // Conexión a la base de datos y preparación de la consulta.
     $stmt = $mydb->prepare("
-        INSERT INTO properties (title, slug, price, tour_url, user_id, property_type_id, thumbnail, rooms, bathrooms, lat, lng, department, city, neighborhood, code_ref, land_m2, land_width, land_length, build_m2, year, parking_capacity, building_floors, status) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO properties (title, slug, price_usd, price_gs, tour_url, user_id, property_type_id, thumbnail, rooms, bathrooms, lat, lng, department, city, neighborhood, code_ref, land_m2, land_width, land_length, build_m2, year, parking_capacity, building_floors, status) 
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     ");
     
-    $stmt->bind_param("ssisiisiiddssssiiiiiiis", $title, $slug, $price, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status);
+    $stmt->bind_param("ssiisiisiiddssssiiiiiiis", $title, $slug, $price_usd, $price_gs, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status);
 
     if (!$stmt->execute()) {
         throw new Exception("Error al insertar la propiedad: " . $stmt->error);
@@ -103,7 +104,6 @@ try {
 
     handleFormError($e->getMessage(), array(
         'title' => $title,
-        'price' => $price,
         'tour_url' => $tour_url,
         'rooms' => $rooms,
         'bathrooms' => $bathrooms,
