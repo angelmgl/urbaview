@@ -237,7 +237,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
     <script src="<?php echo BASE_URL ?>/assets/js/accordeon.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/map.js"></script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0&callback=initMap&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY ?>&callback=initMap&v=weekly" async></script>
 </body>
 
 </html>

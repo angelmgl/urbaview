@@ -242,7 +242,7 @@ $mydb->close();
     <script src="<?php echo BASE_URL ?>/admin/assets/js/properties.js"></script>
     <script src="<?php echo BASE_URL ?>/admin/assets/js/location_picker.js"></script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4Fd6pFmCT6rj-QBHp-B7juDSpn9MW2H0&callback=initMap&v=weekly" async></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY ?>&callback=initMap&v=weekly" async></script>
 </body>
 
 </html>
