@@ -44,7 +44,11 @@ $mydb->close();
 <body>
     <?php include './components/in_header.php' ?>
     <main class="container px py" id="edit-profile">
-        <h1>Editar mi perfil</h1>
+        <div class="top-bar">
+            <h1>Editar mi perfil</h1>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL . "/u/" . $session_username ?>">Volver</a>
+        </div>
+
         <?php
         if (isset($_SESSION['error'])) {
             echo '<p class="error">';
