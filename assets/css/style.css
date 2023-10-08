@@ -1140,6 +1140,14 @@ p {
     align-items: center;
 }
 
+.remove-actions {
+    margin-top: 60px;
+}
+
+.remove-actions form {
+    display: inline;
+}
+
 @media screen and (max-width: 768px) {
     .custom-form {
         display: flex;
