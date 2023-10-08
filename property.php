@@ -120,11 +120,14 @@ if (!isset($property) || ($property['status'] != 'publicado' && (!isset($_SESSIO
 }
 
 $title = $property['title'];
+$seo_image = get_thumbnail($property);
 $profile_picture = get_profile_picture($property);
 $contact_email = $property['contact_email'];
 $facebook = $property['facebook'];
 $instagram = $property['instagram'];
 $whatsapp = $property['whatsapp'];
+
+$this_url = BASE_URL . "/tours/" . $property["slug"];
 
 $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
@@ -175,7 +178,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
                 <div class="user-info">
                     <div class="share-container">
                         <p class="views">Visitas <span class="semibold">71</span></p>
-                        <button class="btn share-btn">
+                        <button id="open-popup" class="btn share-btn">
                             <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
                                 <path fill="currentColor" d="M352 224c53 0 96-43 96-96s-43-96-96-96s-96 43-96 96c0 4 .2 8 .7 11.9l-94.1 47C145.4 170.2 121.9 160 96 160c-53 0-96 43-96 96s43 96 96 96c25.9 0 49.4-10.2 66.6-26.9l94.1 47c-.5 3.9-.7 7.8-.7 11.9c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-25.9 0-49.4 10.2-66.6 26.9l-94.1-47c.5-3.9 .7-7.8 .7-11.9s-.2-8-.7-11.9l94.1-47C302.6 213.8 326.1 224 352 224z" />
                             </svg>
@@ -234,8 +237,13 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
         </section>
         <!-- TERMINA SECCIÓN DE MULTIMEDIA -->
     </main>
+
+    <!-- SOCIAL SHARE POPUP -->
+    <?php include './components/share_popup.php'; ?>
+
     <script src="<?php echo BASE_URL ?>/assets/js/accordeon.js"></script>
     <script src="<?php echo BASE_URL ?>/assets/js/map.js"></script>
+    <script src="<?php echo BASE_URL ?>/assets/js/share-popup.js"></script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY ?>&callback=initMap&v=weekly" async></script>
 </body>

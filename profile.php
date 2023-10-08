@@ -104,6 +104,7 @@ $title = $user['full_name'];
 $full_name = $user['full_name'];
 $company = $user['company'];
 $profile_picture = get_profile_picture($user);
+$seo_image = $profile_picture;
 $contact_email = $user['contact_email'];
 $facebook = $user['facebook'];
 $instagram = $user['instagram'];
