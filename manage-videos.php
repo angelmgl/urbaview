@@ -1,7 +1,8 @@
 <?php
 
 require './config/config.php';
-$title = "Imágenes";
+require './admin/helpers/properties.php';
+$title = "Videos";
 
 // iniciar sesión y verificar autorización
 session_start();
@@ -21,14 +22,14 @@ $property_id = $_GET["property_id"];
 $property_data = [
     'title' => '',
     'slug' => '',
-    'images' => []
+    'videos' => []
 ];
 
 // preparar la consulta
 $stmt = $mydb->prepare("
-    SELECT properties.title, properties.slug, properties.user_id, images.image_path, images.id AS image_id
+    SELECT properties.title, properties.slug, properties.user_id, videos.youtube_url, videos.id AS video_id
     FROM properties 
-    LEFT JOIN images ON properties.id = images.property_id 
+    LEFT JOIN videos ON properties.id = videos.property_id 
     WHERE properties.id = ?;
 ");
 $stmt->bind_param("i", $property_id);
@@ -43,17 +44,17 @@ if ($result->num_rows > 0) {
         $property_data['title'] = $row['title'];
         $property_data['slug'] = $row['slug'];
         $property_data['user_id'] = $row['user_id'];
-        if ($row['image_path'] !== null && $row['image_id'] !== null) { // para evitar agregar imágenes nulas
-            $property_data['images'][] = [
-                'image_path' => $row['image_path'],
-                'image_id' => $row['image_id']
+        if ($row['youtube_url'] !== null && $row['video_id'] !== null) { // para evitar agregar imágenes nulas
+            $property_data['videos'][] = [
+                'youtube_url' => $row['youtube_url'],
+                'video_id' => $row['video_id']
             ];
         }
     }
 }
 
 // Si no hay título para la propiedad, asumimos que no se encontró la propiedad
-// Si los user_id no coinciden asumimos que las imagenes no le pertenecen
+// Si los user_id no coinciden asumimos que los videos no le pertenecen
 if (empty($property_data['title']) || $property_data['user_id'] != $session_id) {
     header("Location: " . BASE_URL . "/u/" . $session_username);
     $stmt->close();
@@ -78,8 +79,8 @@ $mydb->close();
 
     <main class="container px py">
         <div class="top-bar">
-            <h1>Administrar imágenes de <?php echo $property_data['title'] ?></h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/edit-my-property?slug=<?php echo $property_data['slug'] ?>">Volver</a>
+            <h1>Administrar videos de <?php echo $property_data['title'] ?></h1>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/edit-my-property?slug=<?php echo $property_data['slug'] ?>">Volver a la propiedad</a>
         </div>
 
         <?php
@@ -91,12 +92,12 @@ $mydb->close();
         }
         ?>
 
-        <form class="admin-form" action="./actions/upload_my_images.php" method="POST" enctype="multipart/form-data">
+        <form class="admin-form" action="./actions/save_my_video.php" method="POST">
             <input type="hidden" name="property_id" value="<?php echo $property_id ?>">
-            <div class="images-input">
-                <label>Selecciona las imágenes...</label>
-                <input type="file" id="images" class="show" name="images[]" accept=".jpg, .jpeg, .png, .webp" multiple>
-                <input id="submit-btn" class="btn btn-primary" type="submit" value="Subir imágenes">
+            <div class="video-input">
+                <label>Pega la URL de tu video:</label>
+                <input type="text" id="video" class="show" name="video" placeholder="https://youtu.be/xgFUC835Xlc?si=bgqrZCsW6AA2sYIj" required>
+                <input id="submit-btn" class="btn btn-primary" type="submit" value="Guardar video">
             </div>
         </form>
 
@@ -109,17 +110,17 @@ $mydb->close();
         }
         ?>
 
-        <?php if (!empty($property_data['images'])) { ?>
-            <section class="images-grid">
+        <?php if (!empty($property_data['videos'])) { ?>
+            <section class="videos-grid">
                 <?php
-                foreach ($property_data['images'] as $image) {
-                    include "./components/image_container.php";
+                foreach ($property_data['videos'] as $video) {
+                    include "./components/video_container.php";
                 }
                 ?>
             </section>
         <?php } else { ?>
             <div>
-                Esta propiedad no posee imágenes...
+                Esta propiedad no posee videos...
             </div>
         <?php } ?>
     </main>
