@@ -1,0 +1,7 @@
+CREATE TABLE property_views (
+    id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    property_id INT(11) UNSIGNED NOT NULL,
+    viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (property_id) REFERENCES properties(id)
+);
