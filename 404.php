@@ -26,18 +26,18 @@ $title = "404 not found";
             </p>
             <ul>
                 <li>
-                    <a href="https://urbaview.net/">🏠 Volver a Inicio</a>
+                    <a href="https://urbaview.net/">Volver a Inicio</a>
                 </li>
                 <li>
                     <?php if (isset($_SESSION['username'])) { ?>
-                        <a href="<?php echo BASE_URL ?>/u/<?php echo $_SESSION['username'] ?>">👉🏻 Volver a tu perfil</a>
+                        <a href="<?php echo BASE_URL ?>/u/<?php echo $_SESSION['username'] ?>">Volver a tu perfil</a>
                     <?php } else { ?>
-                        <a href="<?php echo BASE_URL ?>/login">👉🏻 Inicia sesión en tu cuenta</a>
+                        <a href="<?php echo BASE_URL ?>/login">Inicia sesión en tu cuenta</a>
                     <?php } ?>
                 </li>
                 <?php if (isset($_SESSION['role']) && $_SESSION['role'] == 'admin') { ?>
                     <li>
-                        <a href="<?php echo BASE_URL ?>/admin/dashboard.php">🤖 Ir al panel de administración</a>
+                        <a href="<?php echo BASE_URL ?>/admin/dashboard.php">Ir al panel de administración</a>
                     </li>
                 <?php } ?>
             </ul>
