@@ -347,6 +347,7 @@ h1 {
 }
 
 .admin-form .text-input input,
+.admin-form .date-input input,
 .admin-form .file-input input,
 .admin-form .select-input select {
     display: block;
@@ -396,6 +397,32 @@ h1 {
 
 .admin-form .change-password:hover {
     color: #080b5f;
+}
+
+.admin-form .date-field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.admin-form .date-field input {
+    width: 80%;
+}
+
+.admin-form .date-field button {
+    width: 18%;
+    padding: 9px 20px;
+    font-size: 16px;
+    background: #785dfb;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.4s;
+}
+
+.admin-form .date-field button:hover {
+    background: #080b5f;
 }
 
 /* REMOVE USER */

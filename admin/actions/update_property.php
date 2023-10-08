@@ -36,6 +36,7 @@ $year = $_POST['year'];
 $parking_capacity = $_POST['parking_capacity'];
 $building_floors = $_POST['building_floors'];
 $status = $_POST['status'];
+$expiration_date = $_POST['expiration_date'];
 $old_thumbnail = $_POST['old_photo'];
 
 $upload_system_dir = "../../uploads/tours/";
@@ -54,11 +55,11 @@ $thumbnail_path = $thumbnail_path ? $thumbnail_path : $old_thumbnail;
 
 // Conexión a la base de datos y preparación de la consulta.
 $stmt = $mydb->prepare("
-    UPDATE properties SET title = ?, price_usd = ?, price_gs = ?, tour_url = ?, user_id = ?, property_type_id = ?, thumbnail = ?, rooms = ?, bathrooms = ?, lat = ?, lng = ?, department = ?, city = ?, neighborhood = ?, code_ref = ?, land_m2 = ?, land_width = ?, land_length = ?, build_m2 = ?, year = ?, parking_capacity = ?, building_floors = ?, status = ? 
+    UPDATE properties SET title = ?, price_usd = ?, price_gs = ?, tour_url = ?, user_id = ?, property_type_id = ?, thumbnail = ?, rooms = ?, bathrooms = ?, lat = ?, lng = ?, department = ?, city = ?, neighborhood = ?, code_ref = ?, land_m2 = ?, land_width = ?, land_length = ?, build_m2 = ?, year = ?, parking_capacity = ?, building_floors = ?, status = ?, expiration_date = ? 
     WHERE id = ?
 ");
 
-$stmt->bind_param("siisiisiiddssssiiiiiiisi", $title, $price_usd, $price_gs, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status, $property_id);
+$stmt->bind_param("siisiisiiddssssiiiiiiissi", $title, $price_usd, $price_gs, $tour_url, $user_id, $property_type_id, $thumbnail_path, $rooms, $bathrooms, $lat, $lng, $department, $city, $neighborhood, $code_ref, $land_m2, $land_width, $land_length, $build_m2, $year, $parking_capacity, $building_floors, $status, $expiration_date, $property_id);
 
 try {
     if ($stmt->execute()) {

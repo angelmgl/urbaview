@@ -78,6 +78,9 @@ while ($row = $property_commodities_result->fetch_assoc()) {
 $pc_stmt->close();
 $mydb->close();
 
+// Si 'expiration_date' es null o no está definido, usamos la fecha actual. Si no, usamos su valor.
+$expiration_date = empty($property['expiration_date']) ? date("Y-m-d") : $property['expiration_date'];
+
 ?>
 
 <!DOCTYPE html>
@@ -230,6 +233,14 @@ $mydb->close();
 
                 </div>
                 <div class="manage-section">
+                    <div class="input-wrapper date-input">
+                        <label for="expiration_date">Fecha de expiración:</label>
+                        <div class="date-field">
+                            <input type="date" id="expiration_date" name="expiration_date" value="<?php echo $expiration_date; ?>">
+                            <button type="button" id="extend-30-days">+30</button>
+                        </div>
+                    </div>
+
                     <div class="input-wrapper select-input">
                         <label for="status">Seleccionar estado:</label>
                         <select id="status" name="status">
@@ -276,6 +287,7 @@ $mydb->close();
     </main>
     <script src="<?php echo BASE_URL ?>/admin/assets/js/properties.js"></script>
     <script src="<?php echo BASE_URL ?>/admin/assets/js/location_picker.js"></script>
+    <script src="<?php echo BASE_URL ?>/admin/assets/js/expiration_date.js"></script>
     <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
     <script src="https://maps.googleapis.com/maps/api/js?key=<?php echo GOOGLE_MAPS_API_KEY ?>&callback=initMap&v=weekly" async></script>
 </body>
