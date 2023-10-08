@@ -3,10 +3,11 @@
 require './config/config.php';
 require './admin/helpers/users.php';
 require './admin/helpers/properties.php';
+require './helpers/views.php';
 
 session_start();
 
-$session_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+$session_user_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
 $session_username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
 $session_role = isset($_SESSION["role"]) ? $_SESSION["role"] : null;
 
@@ -90,6 +91,14 @@ if ($result->num_rows > 0) {
 }
 
 $stmt->close();
+
+if ($session_user_id != $user["id"]) {
+    // evita que el usuario se registre vistas a si mismo
+    register_view($user["id"], 'user', $mydb);
+}
+
+$total_views = get_views($user["id"], 'user', $mydb);
+
 $mydb->close();
 
 if (!isset($user) || ($user['is_active'] != 1 && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
@@ -122,7 +131,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
 <body>
     <?php
-    if ($session_id) {
+    if ($session_user_id) {
         include './components/in_header.php';
     } else {
         include './components/out_header.php';
@@ -148,8 +157,8 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
             <div class="aditional-data">
                 <?php include './components/contact_methods.php' ?>
                 <div class="details">
-                    <p id="tours">Tours <span class="semibold">9</span></p>
-                    <p id="views">Vistas <span class="semibold">105</span></p>
+                    <p id="tours">Tours <span class="semibold"><?php echo count($user['properties']) ?></span></p>
+                    <p id="views">Vistas <span class="semibold"><?php echo $total_views ?></span></p>
                 </div>
             </div>
         </section>

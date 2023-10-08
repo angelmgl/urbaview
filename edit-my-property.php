@@ -8,12 +8,12 @@ $title = "Editar mi tour";
 // iniciar sesión y verificar autorización
 session_start();
 
-$session_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+$session_user_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
 $session_username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
 $session_role = isset($_SESSION["role"]) ? $_SESSION["role"] : null;
 
 // Si no hay sesión redirige al login
-if ($session_id === null) {
+if ($session_user_id === null) {
     header("Location: " . BASE_URL . "/login.php");
     exit;
 }
@@ -32,7 +32,7 @@ if ($result->num_rows > 0) {
 }
 
 // Si no se encontró la propiedad
-if ($property === null || $property["user_id"] != $session_id) {
+if ($property === null || $property["user_id"] != $session_user_id) {
     $property_stmt->close();
     $mydb->close();
     header("Location: " . BASE_URL . "/u/" . $session_username);

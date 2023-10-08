@@ -7,7 +7,7 @@ require './helpers/views.php';
 
 session_start();
 
-$session_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
+$session_user_id = isset($_SESSION["user_id"]) ? $_SESSION["user_id"] : null;
 $session_username = isset($_SESSION["username"]) ? $_SESSION["username"] : null;
 $session_role = isset($_SESSION["role"]) ? $_SESSION["role"] : null;
 
@@ -113,9 +113,12 @@ $stmt->close();
 
 $property['commodities'] = $commodities;
 
-register_property_view($property_id, $mydb);
+if ($session_user_id != $property["user_id"]) {
+    // evitar que el dueño pueda registrar visitas aquí
+    register_view($property_id, 'property', $mydb);
+}
 
-$total_views = get_property_views($property_id, $mydb);
+$total_views = get_views($property_id, 'property', $mydb);
 
 $mydb->close();
 
@@ -149,7 +152,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
 <body>
     <?php
-    if ($session_id) {
+    if ($session_user_id) {
         include './components/in_header.php';
     } else {
         include './components/out_header.php';
@@ -167,7 +170,7 @@ $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
                     <div>
                         <span id="property_type">
                             <?php echo $property["type_name"] ?>
-                            <?php if ($session_id === $property["user_id"]) { ?>
+                            <?php if ($session_user_id === $property["user_id"]) { ?>
                                 <a href="<?php echo BASE_URL . "/edit-my-property?slug=" . $slug ?>" class="edit-access">
                                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
                                         <path fill="currentColor" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
