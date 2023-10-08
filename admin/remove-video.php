@@ -50,7 +50,7 @@ $video_id =  get_video_id($video["youtube_url"]);
 
 <body>
     <?php include './components/header.php'; ?>
-    <main class="container px py" id="remove-user">
+    <main class="container px py" id="remove-video">
         <iframe src="https://www.youtube.com/embed/<?php echo $video_id ?>&amp;controls=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
         <h1>¿Estás seguro de que quieres eliminar este video?</h1>

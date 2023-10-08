@@ -61,7 +61,7 @@ $instance_title = isset($option_instance["name"]) && $option_instance["name"]
 
 <body>
     <?php include './components/header.php'; ?>
-    <main class="container px py" id="remove-user">
+    <main class="container px py" id="remove-option">
         <h1>¿Estás seguro de que quieres eliminar la opción <?php echo $instance_title ?>?</h1>
 
         <div class="remove-actions">
