@@ -999,7 +999,6 @@ p {
 
 /* CUSTOM FORM */
 
-
 /* ADMIN FORM */
 
 .custom-form {
@@ -1158,7 +1157,7 @@ p {
         width: 100%;
         padding-right: 0;
     }
-    
+
     .custom-form .manage-section {
         width: 100%;
         padding: 20px;
@@ -1221,7 +1220,8 @@ p {
     border-bottom: 1px solid #c0c0c0;
 }
 
-.images-grid, .videos-grid {
+.images-grid,
+.videos-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
@@ -1256,5 +1256,42 @@ p {
 
 .image-to-remove {
     display: block;
+    width: 100%;
     max-width: 500px;
+}
+
+@media screen and (max-width: 768px) {
+    #manage-media .top-bar {
+        flex-direction: column-reverse;
+        align-items: start;
+    }
+
+    .images-input label,
+    .video-input label {
+        margin-top: 10px;
+        margin-right: 0;
+    }
+
+    .images-input,
+    .video-input {
+        flex-direction: column;
+    }
+
+    .images-input input {
+        margin: 10px 0;
+    }
+
+    .video-input input {
+        margin: 10px 0;
+    }
+
+    .images-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .videos-grid {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
 }

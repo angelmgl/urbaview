@@ -77,10 +77,10 @@ $mydb->close();
 <body>
     <?php include './components/in_header.php'; ?>
 
-    <main class="container px py">
+    <main class="container px py" id="manage-media">
         <div class="top-bar">
             <h1>Administrar videos de <?php echo $property_data['title'] ?></h1>
-            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/edit-my-property?slug=<?php echo $property_data['slug'] ?>">Volver a la propiedad</a>
+            <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/edit-my-property?slug=<?php echo $property_data['slug'] ?>">Volver</a>
         </div>
 
         <?php
@@ -92,7 +92,7 @@ $mydb->close();
         }
         ?>
 
-        <form class="admin-form" action="./actions/save_my_video.php" method="POST">
+        <form class="custom-form" action="./actions/save_my_video.php" method="POST">
             <input type="hidden" name="property_id" value="<?php echo $property_id ?>">
             <div class="video-input">
                 <label>Pega la URL de tu video:</label>

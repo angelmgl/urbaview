@@ -76,7 +76,7 @@ $mydb->close();
 <body>
     <?php include './components/in_header.php'; ?>
 
-    <main class="container px py">
+    <main class="container px py" id="manage-media">
         <div class="top-bar">
             <h1>Administrar imágenes de <?php echo $property_data['title'] ?></h1>
             <a class="btn btn-secondary" href="<?php echo BASE_URL ?>/edit-my-property?slug=<?php echo $property_data['slug'] ?>">Volver</a>
@@ -91,7 +91,7 @@ $mydb->close();
         }
         ?>
 
-        <form class="admin-form" action="./actions/upload_my_images.php" method="POST" enctype="multipart/form-data">
+        <form class="custom-form" action="./actions/upload_my_images.php" method="POST" enctype="multipart/form-data">
             <input type="hidden" name="property_id" value="<?php echo $property_id ?>">
             <div class="images-input">
                 <label>Selecciona las imágenes...</label>
