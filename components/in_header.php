@@ -2,7 +2,11 @@
     <div class="container px">
         <img id="site-logo" src="<?php echo BASE_URL ?>/assets/img/logo_white.svg" alt="Logo Urbaview" width="220" />
         <div id="nav-links">
-            <a class="nav-link" href="<?php echo BASE_URL ?>/u/<?php echo $session_username ?>">Mi perfil</a>
+            <?php if($session_role == "admin") { ?>
+                <a class="nav-link" href="<?php echo BASE_URL ?>/admin/dashboard.php">Dashboard</a>
+            <?php } else if($session_role == "user") { ?>
+                <a class="nav-link" href="<?php echo BASE_URL ?>/u/<?php echo $session_username ?>">Mi perfil</a>
+            <?php } ?>
             <form action="<?php echo BASE_URL ?>/actions/auth_logout.php" method="post">
                 <button class="logout-btn" type="submit" name="logout">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">

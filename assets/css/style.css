@@ -91,6 +91,22 @@ p {
     pointer-events: none;
 }
 
+.edit-access {
+    font-size: 14px;
+    color: #080b5f;
+    background: white;
+    border: 1px solid white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: all 0.4s;
+}
+
+.edit-access:hover {
+    background: #f7f7f7;
+    border-color: #cecede;
+}
+
+
 /* OUT HEADER COMPONENT */
 
 #out-header {
@@ -281,8 +297,15 @@ p {
 }
 
 #profile-page .main-data {
+    position: relative;
     display: flex;
     align-items: center;
+}
+
+#profile-page .main-data .edit-access {
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }
 
 #profile-page .main-data #name {
@@ -559,9 +582,16 @@ p {
 }
 
 #property-page .property-info #property_type {
+    position: relative;
+    display: block;
     font-size: 22px;
     font-weight: 700;
     text-transform: uppercase;
+}
+
+#property-page .property-info .edit-access {
+    position: absolute;
+    right: 0;
 }
 
 #property-page .property-info #title {
@@ -945,4 +975,147 @@ p {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 20px;
+}
+
+/* CUSTOM FORM */
+
+
+/* ADMIN FORM */
+
+.custom-form {
+    margin-top: 40px;
+    display: flex;
+}
+
+.custom-form hr {
+    border: 1px solid #e2efff;
+    margin-top: 40px;
+    margin-bottom: 20px;
+}
+
+.custom-form .required {
+    color: tomato;
+}
+
+.custom-form .data-section {
+    width: 70%;
+    padding-right: 60px;
+}
+
+.custom-form .manage-section {
+    width: 30%;
+    background: #e2efff;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.custom-form .input-wrapper {
+    margin-bottom: 15px;
+}
+
+.custom-form .input-wrapper label {
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.custom-form .text-input label,
+.custom-form .file-input label,
+.custom-form .select-input label {
+    display: block;
+}
+
+.custom-form .text-input input,
+.custom-form .file-input input,
+.custom-form .select-input select {
+    display: block;
+    width: 100%;
+    padding: 7px 20px;
+    font-size: 16px;
+    border: 1px solid #c0c0c0;
+    border-radius: 5px;
+}
+
+.custom-form #profile-picture-container,
+.custom-form #thumbnail-container {
+    margin: 10px 0;
+    width: 100%;
+    aspect-ratio: 1;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+}
+
+.custom-form #profile-picture-container .action,
+.custom-form #thumbnail-container .action {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.custom-form .file-input #profile-picture-container,
+.custom-form .file-input #thumbnail-container,
+.custom-form .file-input input {
+    display: none;
+}
+
+.custom-form .file-input #profile-picture-container.show,
+.custom-form .file-input #thumbnail-container.show,
+.custom-form .file-input input.show {
+    display: block;
+}
+
+.action {
+    background: white;
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+.action.delete {
+    background: tomato;
+}
+
+.action.delete:hover {
+    background: brown;
+}
+
+.error {
+    background-color: tomato;
+    color: white;
+    padding: 7px 25px;
+    border-radius: 8px;
+}
+
+.success {
+    background-color: lightgreen;
+    color: white;
+    padding: 7px 25px;
+    border-radius: 8px;
+}
+
+@media screen and (max-width: 768px) {
+    .custom-form {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .custom-form .data-section {
+        width: 100%;
+        padding-right: 0;
+    }
+    
+    .custom-form .manage-section {
+        width: 100%;
+        padding: 20px;
+        margin-top: 3%;
+    }
 }
