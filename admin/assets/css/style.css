@@ -573,3 +573,37 @@ h1 {
     display: block;
     max-width: 500px;
 }
+
+/* DASHBOARD PAGE */
+
+#popular {
+    display: flex;
+}
+
+#popular .popular-properties,
+#popular .popular-users {
+    width: 50%;
+    padding-right: 50px;
+}
+
+.popular-item {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.popular-item a {
+    color: #785dfb;
+    font-weight: 600;
+}
+
+.popular-item a:hover {
+    color: #080b5f;
+}
+
+.item-title {
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 600;
+}
