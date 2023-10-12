@@ -135,7 +135,7 @@ $facebook = $property['facebook'];
 $instagram = $property['instagram'];
 $whatsapp = $property['whatsapp'];
 
-$this_url = BASE_URL . "/tours/" . $property["slug"];
+$this_url = BASE_URL . "/tour/" . $property["slug"];
 
 $has_contact = $contact_email || $facebook || $instagram || $whatsapp;
 
