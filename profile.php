@@ -19,6 +19,7 @@ $properties = [];
 $query = "
     SELECT 
         u.*,
+        u.id AS xuser_id,
         p.*, 
         p.id AS property_id,
         i.image_path,
@@ -44,7 +45,7 @@ if ($result->num_rows > 0) {
         if (!$user) {
             // Extraer detalles del usuario de la primera fila
             $user = [
-                'id' => $row['id'],
+                'id' => $row['xuser_id'],
                 'username' => $row['username'],
                 'full_name' => $row['full_name'],
                 'company' => $row['company'],
