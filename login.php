@@ -3,9 +3,12 @@
 require './config/config.php';
 session_start();
 
-// Si el usuario ya tiene una sesión iniciada, redirige al dashboard
-if (isset($_SESSION['user_id'])) {
+// Si el usuario ya tiene una sesión iniciada y es admin redirige al dashboard
+if (isset($_SESSION['role']) && $_SESSION['role'] == "admin") {
     header("Location: " . BASE_URL . "/admin/dashboard.php");
+    exit;
+} else if(isset($_SESSION['role']) && $_SESSION['role'] == "user") {
+    header("Location: " . BASE_URL . "/u/" . $_SESSION['username']);
     exit;
 }
 
@@ -40,7 +43,6 @@ $title = "Iniciar sesión";
                 ?>
                 <input class="btn btn-primary" type="submit" value="Ingresar" />
             </form>
-            <a href="#">¿Olvidaste tu usuario o la contraseña?</a>
         </div>
     </main>
     <?php include './components/footer.php'; ?>

@@ -1315,7 +1315,7 @@ p {
 }
 
 #share-popup .popup-content {
-    padding: 20px;
+    padding: 30px 20px 40px;
     border-radius: 20px;
     background: #fff;
     position: relative;
