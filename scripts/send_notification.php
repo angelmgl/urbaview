@@ -50,3 +50,5 @@ if ($result->num_rows > 0) {
     // Por ejemplo, puedes registrar un mensaje en un archivo de log, enviar un aviso, etc.
     echo "No hay propiedades próximas a vencer en los próximos 7 días.";
 }
+
+?>
