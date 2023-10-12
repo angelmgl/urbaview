@@ -7,16 +7,21 @@ require '../PHPMailer/Exception.php';
 require '../PHPMailer/PHPMailer.php';
 require '../PHPMailer/SMTP.php';
 
-function send_notification($template, $subject, $user_email, $user_name, $message, $button_url, $button_text, $recommendation)
+function send_notification($template, $subject, $user_email, $user_name, $first_message, $property, $second_message, $button_url, $button_text, $recommendation, $expiration)
 {
     // Reemplaza los placeholders con contenido dinámico
+    $template = str_replace('{subject}', $subject, $template);
     $template = str_replace('{name}', $user_name, $template);
-    $template = str_replace('{message}', $message, $template);
+    $template = str_replace('{first_message}', $first_message, $template);
+    $template = str_replace('{property}', $property, $template);
+    $template = str_replace('{second_message}', $second_message, $template);
     $template = str_replace('{button_url}', $button_url, $template);
     $template = str_replace('{button_text}', $button_text, $template);
     $template = str_replace('{recommendation}', $recommendation, $template);
+    $template = str_replace('{expiration}', $expiration, $template);
 
     $mail = new PHPMailer(true);
+    $mail->CharSet = 'UTF-8';
 
     try {
         // Configuración del servidor

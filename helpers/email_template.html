@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset="UTF-8">
-    <title>Mensaje</title>
-    <style>
-        body {
-            font-family: Verdana;
-        }
-    </style>
-</head>
-<body>
-    <div style="max-width: 550px; margin: 0 auto;">
-        <header style="padding: 40px 20px; background-color: #e2efff;">
-            <img 
-                style="display: block; margin: 0 auto;" 
-                src="https://i.ibb.co/PztNYx3/logo-blue.png"
-                alt="Logo" 
-                width="200" 
-            />
-        </header>
-        <h2>Hola {name},</h2>
-        <p>{message}</p>
-        <a 
-            href="{button_url}" 
-            target="_blank"
-            style="display: inline-block; padding: 8px 20px; margin: 15px 0; border-radius: 20px; text-align: center; text-decoration: none; color: white; background-color: #785dfb;"
-        >
-            {button_text}
-        </a>
-        <p>{recommendation}</p>
-        <p>Saludos,</p>
-        <p>Equipo de Urbaview</p>
-    </div>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{subject}</title>
+        <style>
+            body {
+                font-family: Verdana;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="max-width: 750px; margin: 0 auto">
+            <header style="padding: 40px 20px; background-color: #e2efff">
+                <img
+                    style="display: block; margin: 0 auto"
+                    src="https://i.ibb.co/PztNYx3/logo-blue.png"
+                    alt="Logo"
+                    width="200"
+                />
+            </header>
+            <div style="padding: 20px; max-width: 500px; margin: 0 auto;">
+                <h2 style="text-align: center;">
+                    <span style="font-weight: normal;">Hola</span> {name},
+                </h2>
+                <p style="text-align: center; margin-bottom: 0;">{first_message}</p>
+                <p style="text-align: center; font-weight: 700; font-size: 18px; margin-top: 0;">{property}</p>
+                <p style="text-align: center;">{second_message}</p>
+                <a
+                    href="{button_url}"
+                    target="_blank"
+                    style="
+                        width: 250px;
+                        display: block;
+                        padding: 8px 20px;
+                        margin: 15px auto;
+                        border-radius: 20px;
+                        text-align: center;
+                        text-decoration: none;
+                        color: white;
+                        background-color: #785dfb;
+                    "
+                >
+                    {button_text}
+                </a>
+                <p style="text-align: center; margin-bottom: 0;">{recommendation}</p>
+                <p style="text-align: center; font-weight: 700; margin-top: 0; font-size: 18px;">{expiration}</p>
+            </div>
+            <footer style="background-color: #090f5e; color: white; padding: 20px 0;">
+                <h3 style="text-align: center;">¿Necesitas soporte de nuestros servicios?</h3>
+                <p style="text-align: center; margin-bottom: 0;">
+                    Encontramos también en Instagram
+                    <a style="color: white;" href="https://instagram.com/urbaview" target="_blank"
+                        >@urbaview</a
+                    >
+                </p>
+                <p style="text-align: center; margin-top: 5px;">
+                    o escribinos por WhatsApp
+                    <a style="color: white;" href="https://wa.me/+595981452254" target="_blank"
+                        >+595981452254</a
+                    >
+                </p>
+            </footer>
+        </div>
+    </body>
 </html>
