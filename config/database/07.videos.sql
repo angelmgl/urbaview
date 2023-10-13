@@ -3,5 +3,5 @@ CREATE TABLE videos (
     property_id INT(11) UNSIGNED,
     youtube_url VARCHAR(255),
 
-    FOREIGN KEY (property_id) REFERENCES properties(id)
+    FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
 );

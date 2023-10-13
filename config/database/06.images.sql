@@ -5,5 +5,5 @@ CREATE TABLE images (
     width INT(11) NOT NULL,
     height INT(11) NOT NULL,
 
-    FOREIGN KEY (property_id) REFERENCES properties(id)
+    FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
 );

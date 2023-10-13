@@ -3,5 +3,5 @@ CREATE TABLE property_views (
     property_id INT(11) UNSIGNED NOT NULL,
     viewed_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 
-    FOREIGN KEY (property_id) REFERENCES properties(id)
+    FOREIGN KEY (property_id) REFERENCES properties(id) ON DELETE CASCADE
 );
