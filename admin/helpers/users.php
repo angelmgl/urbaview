@@ -4,7 +4,7 @@ function get_profile_picture($user) {
     if(isset($user["profile_picture"]) && $user["profile_picture"]) {
         return BASE_URL . $user["profile_picture"];
     } else {
-        return BASE_URL . '/assets/img/avatar.webp';
+        return BASE_URL . '/assets/img/user_placeholder.png';
     }
 }
 
