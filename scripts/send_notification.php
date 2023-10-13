@@ -8,7 +8,7 @@ $sql = "
     FROM properties 
     INNER JOIN users ON properties.user_id = users.id 
     WHERE properties.status = 'publicado' 
-    AND properties.expiration_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 7 DAY)";
+    AND properties.expiration_date BETWEEN CURDATE() AND DATE_ADD(CURDATE(), INTERVAL 5 DAY)";
 $result = $mydb->query($sql);
 
 // Carga la plantilla
