@@ -93,8 +93,8 @@ if ($user === null) {
                     </div>
 
                     <div class="input-wrapper text-input">
-                        <label for="company">Empresa: <span class="required">*</span></label>
-                        <input type="text" id="company" name="company" value="<?php echo $user['company']; ?>" required>
+                        <label for="company">Empresa:</label>
+                        <input type="text" id="company" name="company" value="<?php echo $user['company']; ?>">
                     </div>
 
                     <hr />

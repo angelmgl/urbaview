@@ -40,7 +40,7 @@
         </div>
         <div class="detail building_floors">
             <h3 class="detail-title">Pisos</h3>
-            <p class="detail-content">2</p>
+            <p class="detail-content"><?php echo $property["building_floors"] ?></p>
         </div>
     </div>
     

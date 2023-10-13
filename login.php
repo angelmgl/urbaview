@@ -30,7 +30,7 @@ $title = "Iniciar sesión";
             <h1>Administra tu cuenta en <span class="semibold">urbaview</span></h1>
             <form id="login-form" action="./actions/auth_login.php" method="POST">
                 <div class="fields-container">
-                    <input class="custom-input" type="text" placeholder="Correo" name="username" required />
+                    <input class="custom-input" type="text" placeholder="Nombre de usuario" name="username" required />
                     <input class="custom-input" type="password" placeholder="Contraseña" name="password" required />
                 </div>
                 <?php
