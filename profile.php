@@ -93,8 +93,6 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 
-$mydb->close();
-
 if (!isset($user) || ($user['is_active'] != 1 && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
     header("Location: " . BASE_URL . "/404.php");
     exit;
@@ -106,6 +104,8 @@ if ($session_user_id != $user["id"]) {
 }
 
 $total_views = get_views($user["id"], 'user', $mydb);
+
+$mydb->close();
 
 $title = $user['full_name'];
 
