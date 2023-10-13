@@ -118,14 +118,14 @@ $stmt->close();
 
 $property['commodities'] = $commodities;
 
-$mydb->close();
-
 if ($session_user_id != $property["user_id"]) {
     // evitar que el dueño pueda registrar visitas aquí
     register_view($property_id, 'property', $mydb);
 }
 
 $total_views = get_views($property_id, 'property', $mydb);
+
+$mydb->close();
 
 $title = $property['title'];
 $seo_image = get_thumbnail($property);
