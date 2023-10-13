@@ -58,7 +58,7 @@ if ($_SESSION['role'] !== 'admin') {
                     </div>
 
                     <label class="cursor-pointer" for="show-password">
-                        <input type="checkbox" id="show-password"> 
+                        <input type="checkbox" id="show-password">
                         Mostrar contraseña
                     </label>
 
@@ -86,17 +86,21 @@ if ($_SESSION['role'] !== 'admin') {
 
                     <div class="input-wrapper text-input">
                         <label for="whatsapp">WhatsApp:</label>
-                        <input type="text" id="whatsapp" name="whatsapp" value="<?php echo get_form_data('whatsapp'); ?>">
+                        <input placeholder="+595991313212" type="text" id="whatsapp" name="whatsapp" value="<?php echo get_form_data('whatsapp'); ?>">
                     </div>
+
+                    <p style="font-size: 14px;">
+                        Recomendamos agregar el prefijo de país para que el botón de whatsapp funcione correctamente. Ej: +595 en el caso de Paraguay.
+                    </p>
 
                     <div class="input-wrapper text-input">
                         <label for="instagram">Instagram:</label>
-                        <input type="text" id="instagram" name="instagram" value="<?php echo get_form_data('instagram'); ?>">
+                        <input placeholder="https://instagram.com/username" type="text" id="instagram" name="instagram" value="<?php echo get_form_data('instagram'); ?>">
                     </div>
 
                     <div class="input-wrapper text-input">
                         <label for="facebook">Facebook:</label>
-                        <input type="text" id="facebook" name="facebook" value="<?php echo get_form_data('facebook'); ?>">
+                        <input placeholder="https://facebook.com/username" type="text" id="facebook" name="facebook" value="<?php echo get_form_data('facebook'); ?>">
                     </div>
                 </div>
                 <div class="manage-section">

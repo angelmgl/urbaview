@@ -107,17 +107,21 @@ if ($user === null) {
 
                     <div class="input-wrapper text-input">
                         <label for="whatsapp">WhatsApp:</label>
-                        <input type="text" id="whatsapp" name="whatsapp" value="<?php echo $user['whatsapp']; ?>">
+                        <input placeholder="+595991313212" type="text" id="whatsapp" name="whatsapp" value="<?php echo $user['whatsapp']; ?>">
                     </div>
+
+                    <p style="font-size: 14px;">
+                        Recomendamos agregar el prefijo de país para que el botón de whatsapp funcione correctamente. Ej: +595 en el caso de Paraguay.
+                    </p>
 
                     <div class="input-wrapper text-input">
                         <label for="instagram">Instagram:</label>
-                        <input type="text" id="instagram" name="instagram" value="<?php echo $user['instagram']; ?>">
+                        <input placeholder="https://instagram.com/username" type="text" id="instagram" name="instagram" value="<?php echo $user['instagram']; ?>">
                     </div>
 
                     <div class="input-wrapper text-input">
                         <label for="facebook">Facebook:</label>
-                        <input type="text" id="facebook" name="facebook" value="<?php echo $user['facebook']; ?>">
+                        <input placeholder="https://facebook.com/username" type="text" id="facebook" name="facebook" value="<?php echo $user['facebook']; ?>">
                     </div>
                 </div>
                 <div class="manage-section">
