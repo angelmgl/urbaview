@@ -1,12 +1,12 @@
 <footer id="site-footer">
     <div class="container px">
         <div>
-            <img src="<?php echo BASE_URL ?>/assets/img/logo_blue.svg" alt="Logo Urbaview" width="220" />
+            <img src="<?php echo BASE_URL ?>/assets/img/logo_blue.svg" alt="Logo Urbaview" width="180" />
         </div>
         <div class="footer-content">
             <div class="copyright">
                 <hr />
-                <p>©2023 urbaview, Todos los derechos reservados.</p>
+                <p>©2023 urbaview, Todos los derechos reservados</p>
                 <p>
                     Los términos, las condiciones, las características, la asistencia técnica,
                     los precios y las opciones de servicio están sujetos a cambios sin previo aviso.

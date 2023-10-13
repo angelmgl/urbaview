@@ -5,26 +5,26 @@
 }
 
 @font-face {
-    font-family: "Montserrat";
-    src: url("../../../assets/fonts/Montserrat-Regular.ttf") format("truetype");
+    font-family: "Montserratx";
+    src: url("../fonts/Montserrat-Regular.ttf") format("truetype");
     font-weight: 400;
 }
 
 @font-face {
-    font-family: "Montserrat";
-    src: url("../../../assets/fonts/Montserrat-SemiBold.ttf") format("truetype");
+    font-family: "Montserratx";
+    src: url("../fonts/Montserrat-SemiBold.ttf") format("truetype");
     font-weight: 600;
 }
 
 @font-face {
     font-family: "MyriadPro";
-    src: url("../../../assets/fonts/MyriadPro-Bold.otf") format("opentype");
+    src: url("../fonts/MyriadPro-Bold.otf") format("opentype");
     font-weight: 700;
 }
 
 @font-face {
     font-family: "Nexa";
-    src: url("../../../assets/fonts/NexaRegular.otf") format("opentype");
+    src: url("../fonts/NexaRegular.otf") format("opentype");
     font-weight: 400;
 }
 
@@ -32,7 +32,7 @@ body,
 input {
     margin: 0;
     padding: 0;
-    font-family: "Montserrat", Verdana, sans-serif;
+    font-family: "Montserratx", Verdana, sans-serif;
     color: #080b5f;
 }
 
@@ -185,8 +185,12 @@ p {
 /* FOOTER COMPONENT */
 
 #site-footer {
-    padding: 60px 0;
+    padding: 30px 0;
     background-color: #e2efff;
+}
+
+#site-footer .container {
+    max-width: 940px;
 }
 
 #site-footer .footer-content {
@@ -201,13 +205,15 @@ p {
 #site-footer .copyright p {
     max-width: 600px;
     margin: 0;
+    font-size: 14px;
+    line-height: 1.2em;
 }
 
 #site-footer .copyright hr {
-    margin-top: 55px;
-    margin-bottom: 15px;
-    border: 4px solid #785dfb;
-    max-width: 150px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    border: 2px solid #785dfb;
+    max-width: 100px;
     margin-left: 0;
 }
 
@@ -218,15 +224,14 @@ p {
 #site-footer .contact p,
 #site-footer .contact h3 {
     margin: 5px 0;
-}
-
-#site-footer .contact .email-p {
-    margin-top: 20px;
+    font-size: 13px;
+    line-height: 1.2em;
 }
 
 #site-footer .contact .icon-link {
     font-weight: 600;
     display: flex;
+    font-size: 13px;
     align-items: center;
 }
 
@@ -235,7 +240,7 @@ p {
 }
 
 #site-footer .contact .icon-link.whatsapp-link svg {
-    font-size: 20px;
+    font-size: 16px;
 }
 
 #site-footer .contact .icon-link svg {
