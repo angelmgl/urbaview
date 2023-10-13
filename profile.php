@@ -93,19 +93,19 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 
-if ($session_user_id != $user["id"]) {
-    // evita que el usuario se registre vistas a si mismo
-    register_view($user["id"], 'user', $mydb);
-}
-
-$total_views = get_views($user["id"], 'user', $mydb);
-
 $mydb->close();
 
 if (!isset($user) || ($user['is_active'] != 1 && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
     header("Location: " . BASE_URL . "/404.php");
     exit;
 }
+
+if ($session_user_id != $user["id"]) {
+    // evita que el usuario se registre vistas a si mismo
+    register_view($user["id"], 'user', $mydb);
+}
+
+$total_views = get_views($user["id"], 'user', $mydb);
 
 $title = $user['full_name'];
 

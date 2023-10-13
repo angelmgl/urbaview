@@ -39,6 +39,11 @@ if ($result->num_rows > 0) {
 
 $stmt->close();
 
+if (!isset($property) || ($property['status'] != 'publicado' && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
+    header("Location: " . BASE_URL . "/404.php");
+    exit;
+}
+
 $property_id = $property['property_id'];
 
 // recuperar las imágenes de la propiedad
@@ -113,19 +118,14 @@ $stmt->close();
 
 $property['commodities'] = $commodities;
 
+$mydb->close();
+
 if ($session_user_id != $property["user_id"]) {
     // evitar que el dueño pueda registrar visitas aquí
     register_view($property_id, 'property', $mydb);
 }
 
 $total_views = get_views($property_id, 'property', $mydb);
-
-$mydb->close();
-
-if (!isset($property) || ($property['status'] != 'publicado' && (!isset($_SESSION["role"]) || $_SESSION["role"] !== 'admin'))) {
-    header("Location: " . BASE_URL . "/404.php");
-    exit;
-}
 
 $title = $property['title'];
 $seo_image = get_thumbnail($property);
