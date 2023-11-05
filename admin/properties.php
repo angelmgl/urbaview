@@ -40,8 +40,13 @@ if ($result->num_rows > 0) {
     }
 }
 
-// recuperar registros de usuarios
-$users_query = "SELECT * FROM  users WHERE is_active = true";
+// recuperar registros de usuarios que tienen al menos una propiedad asociada
+$users_query = "SELECT users.* 
+                FROM users 
+                INNER JOIN properties ON users.id = properties.user_id 
+                WHERE users.is_active = true 
+                GROUP BY users.id
+                ORDER BY users.full_name ASC";
 $users_result = $mydb->query($users_query);
 
 $users = [];
